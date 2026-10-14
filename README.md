@@ -93,8 +93,8 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [Cargo.toml](Cargo.toml) | Jason Stys: dependency-free safe Rust equivalents; no unsafe code or external crates. |
 | [LICENSE](LICENSE) | MIT license for Jason Stys's authored code. |
 | [README.md](README.md) | Memory Safety Analysis Lab. |
-| [compile-fail/borrowed.rs](compile-fail/borrowed.rs) | Jason Stys: expected E0502 exercise; rustc must reject mutation during a live shared borrow. |
-| [compile-fail/moved.rs](compile-fail/moved.rs) | Jason Stys: expected E0382 exercise; rustc must reject use after moving ownership. |
+| [compile-fail/borrowed.rs](compile-fail/borrowed.rs) | Jason Stys: expected E0502 exercise; rustc must reject mutation during a live shared borrow. The shared view is used after attempted mutation, preserving the compile-time lifetime conflict. |
+| [compile-fail/moved.rs](compile-fail/moved.rs) | Jason Stys: expected E0382 exercise; rustc must reject use after moving ownership. No executable is produced or run; the earlier move consumes the owned value. |
 | [docs/architecture.md](docs/architecture.md) | ADR-001: separate safe analysis from deliberate fault specimens. |
 | [docs/contracts.md](docs/contracts.md) | Data, ownership and process contracts. |
 | [docs/defects.md](docs/defects.md) | Defect-to-fix teaching guide. |
@@ -113,9 +113,9 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [msal/core.py](msal/core.py) | Jason Stys: independent MSL1 reference decoder, deterministic corpus and strict native-result contract. |
 | [msal/runner.py](msal/runner.py) | Jason Stys: deadline-bounded trusted native subprocesses and three-way differential evidence. |
 | [native/fuzz.cpp](native/fuzz.cpp) | Jason Stys: libFuzzer callback exercises only safe bounded parser code under ASan/UBSan. |
-| [native/main.cpp](native/main.cpp) | Jason Stys: bounded binary batch stdin worker; safe parser metadata only, no arbitrary file |
+| [native/main.cpp](native/main.cpp) | Jason Stys: bounded binary batch stdin worker; safe parser metadata only, no arbitrary file execution. |
 | [native/safe.cpp](native/safe.cpp) | Jason Stys: safe C++20 parsing/ownership fixes for bounds, length arithmetic and stale lifetimes. |
-| [native/safe.hpp](native/safe.hpp) | Jason Stys: bounds-checked owned record parsing and generation-safe handles; no raw owning |
+| [native/safe.hpp](native/safe.hpp) | Jason Stys: bounds-checked owned record parsing and generation-safe handles; no raw owning pointers. |
 | [native/tests.cpp](native/tests.cpp) | Jason Stys: always-active C++ bounds, ownership, stale-handle and malformed parser regressions. |
 | [pyproject.toml](pyproject.toml) | Jason Stys: strict Python tooling and all-runtime-module branch/statement coverage. |
 | [requirements-dev.in](requirements-dev.in) | Jason Stys: exact development-only tools; Python runtime uses only the standard library. |
@@ -132,7 +132,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [scripts/sanitizers.py](scripts/sanitizers.py) | Jason Stys: explicit trusted Linux specimen assertions, safe runtime sanitizer checks and coverage. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Jason Stys: safe default-build isolation, private-state exclusion, action pins and exact local links. |
-| [specimens/faults.cpp](specimens/faults.cpp) | Jason Stys: intentionally faulty synthetic sanitizer specimens; NEVER part of the default safe |
+| [specimens/faults.cpp](specimens/faults.cpp) | Jason Stys: intentionally faulty synthetic sanitizer specimens; NEVER part of the default safe build. Execute only through the explicit Linux CI teaching harness; no arbitrary targets or exploit payloads. |
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: actual worker/CLI privacy, no-overwrite output and process/batch failure regressions. |
 | [tests/test\_core.py](tests/test_core.py) | Jason Stys: reference/native protocol bounds, deterministic corpus and malformed-data properties. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |

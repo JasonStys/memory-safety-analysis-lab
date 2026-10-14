@@ -1,25 +1,30 @@
 """Jason Stys: exact tracked-file README purpose inventory, unknown files fail rather than receive guesses."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 30
-# variable: BEGIN — line 31
-# variable: END — line 31
-# variable: SPECIAL — line 32
-# definition: purpose — line 45
-# parameter: name — line 45
-# variable: text — line 49
-# variable: line — line 54
-# definition: main — line 60
-# variable: parser — line 62
-# variable: args — line 64
-# variable: names — line 65
-# variable: rows — line 73
-# variable: name — line 74
-# variable: label — line 75
-# variable: path — line 77
-# variable: original — line 78
-# variable: end — line 79
-# variable: start — line 79
-# variable: expected — line 80
+# variable: ROOT — line 35
+# variable: BEGIN — line 36
+# variable: END — line 36
+# variable: SPECIAL — line 37
+# definition: purpose — line 50
+# parameter: name — line 50
+# variable: text — line 54
+# variable: lines — line 59
+# variable: index — line 60
+# variable: line — line 60
+# variable: description — line 62
+# variable: continuation — line 64
+# variable: description — line 70
+# definition: main — line 75
+# variable: parser — line 77
+# variable: args — line 79
+# variable: names — line 80
+# variable: rows — line 88
+# variable: name — line 89
+# variable: label — line 90
+# variable: path — line 92
+# variable: original — line 93
+# variable: end — line 94
+# variable: start — line 94
+# variable: expected — line 95
 # END CODE MAP
 
 import argparse
@@ -51,9 +56,19 @@ def purpose(name: str) -> str:
         return (ast.get_docstring(ast.parse(text)) or "").splitlines()[0]
     if name.endswith(".md"):
         return text.splitlines()[0].lstrip("# ") + "."
-    for line in text.splitlines():
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
         if "Jason Stys:" in line:
-            return line.lstrip("#!/- ")
+            description = line.lstrip("#!/- ")
+            if name.endswith((".cpp", ".hpp", ".rs")):
+                for continuation in lines[index + 1 :]:
+                    if (
+                        not continuation.startswith("//")
+                        or "BEGIN CODE MAP" in continuation
+                    ):
+                        break
+                    description += " " + continuation.lstrip("/! ")
+            return description
     raise ValueError("Tracked-file purpose missing: " + name)
 
 
