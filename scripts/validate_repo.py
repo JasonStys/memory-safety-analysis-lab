@@ -1,16 +1,17 @@
 """Jason Stys: safe default-build isolation, private-state exclusion, action pins and exact local links."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 22
-# definition: main — line 25
-# variable: names — line 27
-# variable: name — line 40
-# variable: path — line 41
-# variable: text — line 46
-# variable: target — line 51
-# variable: action — line 57
-# variable: word — line 61
-# variable: cmake — line 73
-# variable: graph — line 75
+# variable: ROOT — line 23
+# definition: main — line 26
+# variable: names — line 28
+# variable: name — line 41
+# variable: path — line 42
+# variable: text — line 47
+# variable: target — line 52
+# variable: action — line 58
+# variable: word — line 62
+# variable: cmake — line 74
+# variable: graph — line 76
+# variable: codeql — line 83
 # END CODE MAP
 
 import json
@@ -79,6 +80,8 @@ def main() -> None:
     ]
     assert "--hash=sha256:" in (ROOT / "requirements-dev.lock").read_text()
     assert "shell=True" not in (ROOT / "msal/runner.py").read_text()
+    codeql = (ROOT / ".github/workflows/codeql.yml").read_text()
+    assert "trap-caching: false" in codeql and "dependency-caching: false" in codeql
     assert len(json.loads((ROOT / "tools.lock.json").read_text())["tools"]) == 2
     print(f"Default-build isolation/privacy/pin/link gates: {len(names)} files passed")
 

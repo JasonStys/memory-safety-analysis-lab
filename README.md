@@ -73,7 +73,7 @@ Read [architecture](docs/architecture.md), [contracts](docs/contracts.md), [CWE/
 
 All code files have purpose/function/class comments plus CI-checked exact-line symbol/variable indexes. Python indexes use AST; C++/Rust/CMake/workflow indexes are lexical occurrences, not claimed as semantic AST analysis. Native compilers and tests independently check syntax/behavior. Generated captures/diagnostics/builds remain ignored and local.
 
-CI has no artifact uploads, no Actions caches and no CodeQL database uploads. Python and safe C++ security-extended CodeQL are separate from deliberate defect demonstrations; no alerts in repaired code are suppressed. GCC/Clang/MSVC and distro tool patch versions are logged; only Rust, development dependencies, scanner releases and action commits are pinned.
+Current CI disables artifact/database uploads and Actions caching, including CodeQL's internal extraction and dependency caches. Early verification runs created three internal CodeQL caches; they are reported in validation evidence and retained pending fresh cleanup approval. Python and safe C++ security-extended CodeQL are separate from deliberate defect demonstrations; no alerts in repaired code are suppressed. GCC/Clang/MSVC and distro tool patch versions are logged; only Rust, development dependencies, scanner releases and action commits are pinned.
 
 ## Complete file guide
 

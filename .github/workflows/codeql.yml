@@ -1,40 +1,42 @@
 # Jason Stys: security-extended Python and safe C++ analysis; faulty specimens are not built in this job.
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# parameter: name — line 39
-# parameter: on — line 40
-# parameter: push — line 41
-# parameter: branches — line 42
-# parameter: pull_request — line 43
-# parameter: workflow_dispatch — line 44
-# parameter: permissions — line 45
-# parameter: contents — line 46
-# parameter: jobs — line 47
-# parameter: analyze — line 48
-# parameter: name — line 49
-# parameter: runs-on — line 50
-# parameter: timeout-minutes — line 51
-# parameter: permissions — line 52
-# parameter: contents — line 53
-# parameter: actions — line 54
-# parameter: security-events — line 55
-# parameter: strategy — line 56
-# parameter: fail-fast — line 57
-# parameter: matrix — line 58
-# parameter: language — line 59
-# parameter: steps — line 60
-# parameter: uses — line 61
-# parameter: with — line 62
-# parameter: persist-credentials — line 63
-# parameter: uses — line 64
-# parameter: with — line 65
-# parameter: languages — line 66
-# parameter: queries — line 67
-# parameter: build-mode — line 68
-# parameter: if — line 69
-# parameter: run — line 70
-# parameter: uses — line 71
-# parameter: with — line 72
-# parameter: upload-database — line 73
+# parameter: name — line 41
+# parameter: on — line 42
+# parameter: push — line 43
+# parameter: branches — line 44
+# parameter: pull_request — line 45
+# parameter: workflow_dispatch — line 46
+# parameter: permissions — line 47
+# parameter: contents — line 48
+# parameter: jobs — line 49
+# parameter: analyze — line 50
+# parameter: name — line 51
+# parameter: runs-on — line 52
+# parameter: timeout-minutes — line 53
+# parameter: permissions — line 54
+# parameter: contents — line 55
+# parameter: actions — line 56
+# parameter: security-events — line 57
+# parameter: strategy — line 58
+# parameter: fail-fast — line 59
+# parameter: matrix — line 60
+# parameter: language — line 61
+# parameter: steps — line 62
+# parameter: uses — line 63
+# parameter: with — line 64
+# parameter: persist-credentials — line 65
+# parameter: uses — line 66
+# parameter: with — line 67
+# parameter: languages — line 68
+# parameter: queries — line 69
+# parameter: trap-caching — line 70
+# parameter: dependency-caching — line 71
+# parameter: build-mode — line 72
+# parameter: if — line 73
+# parameter: run — line 74
+# parameter: uses — line 75
+# parameter: with — line 76
+# parameter: upload-database — line 77
 # END CODE MAP
 name: CodeQL
 on:
@@ -65,6 +67,8 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           queries: security-extended
+          trap-caching: false
+          dependency-caching: false
           build-mode: ${{ matrix.language == 'c-cpp' && 'manual' || 'none' }}
       - if: matrix.language == 'c-cpp'
         run: cmake -S . -B out/codeql -DCMAKE_BUILD_TYPE=Release && cmake --build out/codeql --parallel 2
