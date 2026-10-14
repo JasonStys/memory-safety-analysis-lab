@@ -1,0 +1,73 @@
+# Jason Stys: security-extended Python and safe C++ analysis; faulty specimens are not built in this job.
+# BEGIN CODE MAP (generated; python scripts/code_map.py)
+# parameter: name — line 39
+# parameter: on — line 40
+# parameter: push — line 41
+# parameter: branches — line 42
+# parameter: pull_request — line 43
+# parameter: workflow_dispatch — line 44
+# parameter: permissions — line 45
+# parameter: contents — line 46
+# parameter: jobs — line 47
+# parameter: analyze — line 48
+# parameter: name — line 49
+# parameter: runs-on — line 50
+# parameter: timeout-minutes — line 51
+# parameter: permissions — line 52
+# parameter: contents — line 53
+# parameter: actions — line 54
+# parameter: security-events — line 55
+# parameter: strategy — line 56
+# parameter: fail-fast — line 57
+# parameter: matrix — line 58
+# parameter: language — line 59
+# parameter: steps — line 60
+# parameter: uses — line 61
+# parameter: with — line 62
+# parameter: persist-credentials — line 63
+# parameter: uses — line 64
+# parameter: with — line 65
+# parameter: languages — line 66
+# parameter: queries — line 67
+# parameter: build-mode — line 68
+# parameter: if — line 69
+# parameter: run — line 70
+# parameter: uses — line 71
+# parameter: with — line 72
+# parameter: upload-database — line 73
+# END CODE MAP
+name: CodeQL
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    name: CodeQL / ${{ matrix.language }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [python, c-cpp]
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d # v4
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-extended
+          build-mode: ${{ matrix.language == 'c-cpp' && 'manual' || 'none' }}
+      - if: matrix.language == 'c-cpp'
+        run: cmake -S . -B out/codeql -DCMAKE_BUILD_TYPE=Release && cmake --build out/codeql --parallel 2
+      - uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d # v4
+        with:
+          upload-database: false

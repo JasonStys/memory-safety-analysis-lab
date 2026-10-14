@@ -1,0 +1,109 @@
+{
+  "schema": "msal-benchmark-v1",
+  "author": "Jason Stys",
+  "measured_at_utc": "2026-10-14T14:33:49.954433+00:00",
+  "os": "Windows",
+  "architecture": "AMD64",
+  "python": "3.14.6",
+  "warmups": 1,
+  "repeats": 7,
+  "scope": "Release native startup + batch stdin/stdout + parsing/hash + Python metadata validation. No sanitizer/coverage instrumentation, generation or network. Not a pure parser benchmark or general language-speed claim.",
+  "workloads": [
+    {
+      "language": "cpp",
+      "records_per_frame": 1,
+      "frames": 100,
+      "frame_bytes": 121,
+      "seconds": [
+        0.008403100000577979,
+        0.010564700000031735,
+        0.008674100000462204,
+        0.00811009999961243,
+        0.008198700000320969,
+        0.008132800000566931,
+        0.012495199999648321
+      ],
+      "median_seconds": 0.008403100000577979
+    },
+    {
+      "language": "rust",
+      "records_per_frame": 1,
+      "frames": 100,
+      "frame_bytes": 121,
+      "seconds": [
+        0.007143400000131805,
+        0.009519899999759218,
+        0.007704300000114017,
+        0.007282800000211864,
+        0.00720279999950435,
+        0.0071845000002213055,
+        0.010307399999874178
+      ],
+      "median_seconds": 0.007282800000211864
+    },
+    {
+      "language": "cpp",
+      "records_per_frame": 32,
+      "frames": 100,
+      "frame_bytes": 3686,
+      "seconds": [
+        0.010210599999481929,
+        0.011812600000666862,
+        0.010854099999960454,
+        0.010656899999958114,
+        0.01008319999982632,
+        0.009471899999880407,
+        0.011617199999818695
+      ],
+      "median_seconds": 0.010656899999958114
+    },
+    {
+      "language": "rust",
+      "records_per_frame": 32,
+      "frames": 100,
+      "frame_bytes": 3686,
+      "seconds": [
+        0.009586500000295928,
+        0.011036700000659039,
+        0.009043199999723583,
+        0.009471899999880407,
+        0.010667300000022806,
+        0.008534300000064832,
+        0.008478400000058173
+      ],
+      "median_seconds": 0.009471899999880407
+    },
+    {
+      "language": "cpp",
+      "records_per_frame": 128,
+      "frames": 100,
+      "frame_bytes": 14726,
+      "seconds": [
+        0.013727599999583617,
+        0.01680190000024595,
+        0.01971659999981057,
+        0.014181399999870337,
+        0.014369700000315788,
+        0.01505020000058721,
+        0.013792800000373973
+      ],
+      "median_seconds": 0.014369700000315788
+    },
+    {
+      "language": "rust",
+      "records_per_frame": 128,
+      "frames": 100,
+      "frame_bytes": 14726,
+      "seconds": [
+        0.012602300000253308,
+        0.013759399999798916,
+        0.013321400000677386,
+        0.01530940000066039,
+        0.01322950000030687,
+        0.013138199999957578,
+        0.018986700000823475
+      ],
+      "median_seconds": 0.013321400000677386
+    }
+  ]
+}

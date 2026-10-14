@@ -1,0 +1,22 @@
+# Jason Stys: exclude working inputs, diagnostics, environments, native builds and crash artifacts.
+out/
+target/
+.venv/
+.tools/
+__pycache__/
+*.pyc
+.coverage*
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+*.profraw
+*.profdata
+crash-*
+leak-*
+timeout-*
+/core
+/core.*
+*.env
+*.key
+*.pem

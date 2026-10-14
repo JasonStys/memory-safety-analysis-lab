@@ -1,0 +1,26 @@
+# Jason Stys: strict Python tooling and all-runtime-module branch/statement coverage.
+[project]
+name = "memory-safety-analysis-lab"
+version = "1.0.0"
+description = "Safe C++/Rust memory analysis and synthetic regression evidence by Jason Stys"
+requires-python = ">=3.12"
+dependencies = []
+[tool.ruff]
+target-version = "py312"
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["msal"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"
+filterwarnings = ["error"]
+[tool.coverage.run]
+branch = true
+source = ["msal"]
+[tool.coverage.report]
+fail_under = 95
+show_missing = true

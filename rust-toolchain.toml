@@ -1,0 +1,5 @@
+# Jason Stys: fixed tested compiler, rustfmt and clippy rather than floating stable.
+[toolchain]
+channel = "1.98.1"
+profile = "minimal"
+components = ["rustfmt", "clippy"]

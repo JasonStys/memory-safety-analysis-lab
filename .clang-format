@@ -1,0 +1,5 @@
+# Jason Stys: readable deterministic C++ formatting, separate generated declaration indexes.
+BasedOnStyle: LLVM
+IndentWidth: 2
+ColumnLimit: 100
+SortIncludes: CaseSensitive
