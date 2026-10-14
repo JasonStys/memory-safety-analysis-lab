@@ -2,7 +2,7 @@
 
 Created by Jason Stys. Contact via [GitHub](https://github.com/JasonStys) or [LinkedIn](https://www.linkedin.com/in/jason-stys-31b30b351/).
 
-Install Python, CMake, rustup and your platform's C++20 development tools from official sources. Windows needs Visual Studio 2022 C++ tools; CMake configures that generator. Ensure cmake/ctest/cargo are on your development shell's PATH. The app requires no pip packages, driver or administrator access. PowerShell activation is optional; do not weaken execution policy/security settings.
+Install Python, CMake, rustup and your platform's C++20 development tools from official sources. Windows needs Visual Studio C++ tools compatible with installed CMake; CMake chooses its supported default Visual Studio generation rather than assuming a specific hosted-runner version. Ensure cmake/ctest/cargo are on your development shell's PATH. The app requires no pip packages, driver or administrator access. PowerShell activation is optional; do not weaken execution policy/security settings.
 
 Run python scripts/build.py from the repo root. It configures only safe C++ targets, builds/tests Release and builds the pinned Rust release. Then python -m msal.cli --output out/review compares the full generated corpus and creates report.json/report.html. Open report.html locally and use browser Find for case/error labels.
 

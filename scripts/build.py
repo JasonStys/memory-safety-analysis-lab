@@ -3,8 +3,8 @@
 # variable: ROOT — line 14
 # definition: main — line 17
 # variable: command — line 19
-# variable: command — line 21
-# variable: command — line 23
+# variable: command — line 22
+# variable: command — line 24
 # END CODE MAP
 
 import os
@@ -18,7 +18,8 @@ def main() -> None:
     """Configure safe native outputs with an installed CMake/compiler; failures stop before running tests."""
     command = ["cmake", "-S", str(ROOT), "-B", str(ROOT / "out/cpp")]
     if os.name == "nt":
-        command += ["-G", "Visual Studio 17 2022"]
+        # Let installed CMake choose its supported Visual Studio generation, including newer runners.
+        command += ["-A", "x64"]
     else:
         command += ["-DCMAKE_BUILD_TYPE=Release"]
     subprocess.run(command, check=True, timeout=120)

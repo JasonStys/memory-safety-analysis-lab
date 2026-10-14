@@ -20,7 +20,7 @@ This is a teaching/assurance lab, **not an arbitrary-code runner, universal vuln
 
 ## Quick start
 
-Requires Python 3.12–3.14, CMake ≥3.24, a C++20 compiler and Rust 1.98.1 through rustup. Windows uses Visual Studio 2022 C++ build tools; Linux/macOS use their installed GCC/Clang toolchain. No Python runtime dependencies.
+Requires Python 3.12–3.14, CMake ≥3.24, a C++20 compiler and Rust 1.98.1 through rustup. Windows uses Visual Studio C++ build tools compatible with installed CMake (2022 or newer); Linux/macOS use their installed GCC/Clang toolchain. No Python runtime dependencies.
 
 From the repository root:
 
