@@ -1,0 +1,110 @@
+{
+  "schema": "msal-ci-acceptance-v1",
+  "author": "Jason Stys",
+  "recorded_at_utc": "2026-10-14T14:56:19Z",
+  "accepted_source_sha": "06c995974fe84e1802d8bf9e5e8ef243c5dea420",
+  "scope": "Immutable implementation acceptance; later documentation commits are independently verified before handoff.",
+  "open_codeql_alerts": 0,
+  "artifact_count": 0,
+  "existing_cache_count": 3,
+  "existing_cache_bytes": 45568175,
+  "cache_note": "Three early CodeQL extraction caches retained pending fresh cleanup approval; explicit trap/dependency caching disabled, accepted run created no additional keys.",
+  "runs": [
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-14T14:53:11Z",
+      "databaseId": 38584506068,
+      "headSha": "06c995974fe84e1802d8bf9e5e8ef243c5dea420",
+      "jobs": [
+        {
+          "completedAt": "2026-10-14T14:53:38Z",
+          "conclusion": "success",
+          "name": "Locked graph + secret + workflow checks",
+          "startedAt": "2026-10-14T14:53:14Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922764561"
+        },
+        {
+          "completedAt": "2026-10-14T14:53:51Z",
+          "conclusion": "success",
+          "name": "Safe C++ + Rust + Python / ubuntu-24.04 / 3.14",
+          "startedAt": "2026-10-14T14:53:14Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922764906"
+        },
+        {
+          "completedAt": "2026-10-14T14:53:52Z",
+          "conclusion": "success",
+          "name": "Sanitizer proofs + coverage-guided fuzzing",
+          "startedAt": "2026-10-14T14:53:14Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922765039"
+        },
+        {
+          "completedAt": "2026-10-14T14:53:49Z",
+          "conclusion": "success",
+          "name": "Safe C++ + Rust + Python / ubuntu-24.04 / 3.12",
+          "startedAt": "2026-10-14T14:53:14Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922765142"
+        },
+        {
+          "completedAt": "2026-10-14T14:54:51Z",
+          "conclusion": "success",
+          "name": "Safe C++ + Rust + Python / windows-latest / 3.14",
+          "startedAt": "2026-10-14T14:53:15Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922765252"
+        },
+        {
+          "completedAt": "2026-10-14T14:53:42Z",
+          "conclusion": "success",
+          "name": "Release correctness + performance observations",
+          "startedAt": "2026-10-14T14:53:14Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922765266"
+        },
+        {
+          "completedAt": "2026-10-14T14:55:17Z",
+          "conclusion": "success",
+          "name": "Safe C++ + Rust + Python / macos-15-intel / 3.14",
+          "startedAt": "2026-10-14T14:53:15Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922765268"
+        }
+      ],
+      "name": "Validate",
+      "status": "completed",
+      "updatedAt": "2026-10-14T14:55:19Z",
+      "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068"
+    },
+    {
+      "conclusion": "success",
+      "createdAt": "2026-10-14T14:53:11Z",
+      "databaseId": 38584506151,
+      "headSha": "06c995974fe84e1802d8bf9e5e8ef243c5dea420",
+      "jobs": [
+        {
+          "completedAt": "2026-10-14T14:54:26Z",
+          "conclusion": "success",
+          "name": "CodeQL / c-cpp",
+          "startedAt": "2026-10-14T14:53:16Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506151/job/115922768430"
+        },
+        {
+          "completedAt": "2026-10-14T14:54:00Z",
+          "conclusion": "success",
+          "name": "CodeQL / python",
+          "startedAt": "2026-10-14T14:53:16Z",
+          "status": "completed",
+          "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506151/job/115922768814"
+        }
+      ],
+      "name": "CodeQL",
+      "status": "completed",
+      "updatedAt": "2026-10-14T14:54:28Z",
+      "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506151"
+    }
+  ]
+}

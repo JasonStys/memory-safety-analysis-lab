@@ -1,0 +1,72 @@
+{
+  "schema": "msal-native-assurance-v1",
+  "author": "Jason Stys",
+  "compiler": "Ubuntu clang version 18.1.3 (1ubuntu1)",
+  "passed": true,
+  "specimen_assertions": [
+    {
+      "case": "specimen-1",
+      "cwe": "CWE-125",
+      "expected_signal": "heap-buffer-overflow",
+      "exit_code": 88,
+      "matched": true
+    },
+    {
+      "case": "specimen-2",
+      "cwe": "CWE-125",
+      "expected_signal": "stack-buffer-overflow",
+      "exit_code": 88,
+      "matched": true
+    },
+    {
+      "case": "specimen-3",
+      "cwe": "CWE-416",
+      "expected_signal": "heap-use-after-free",
+      "exit_code": 88,
+      "matched": true
+    },
+    {
+      "case": "specimen-4",
+      "cwe": "CWE-415",
+      "expected_signal": "attempting double-free",
+      "exit_code": 88,
+      "matched": true
+    },
+    {
+      "case": "specimen-5",
+      "cwe": "CWE-401",
+      "expected_signal": "detected memory leaks",
+      "exit_code": 88,
+      "matched": true
+    },
+    {
+      "case": "specimen-6",
+      "cwe": "CWE-190",
+      "expected_signal": "signed integer overflow",
+      "exit_code": 88,
+      "matched": true
+    },
+    {
+      "case": "moved",
+      "expected_signal": "E0382",
+      "exit_code": 1,
+      "matched": true
+    },
+    {
+      "case": "borrowed",
+      "expected_signal": "E0502",
+      "exit_code": 1,
+      "matched": true
+    }
+  ],
+  "clean_safe_cpp": true,
+  "safe_cpp_line_coverage_percent": 99.3006993006993,
+  "coverage_files": [
+    "native/safe.cpp",
+    "native/main.cpp"
+  ],
+  "limits": "Trusted synthetic specimens in separate hosted processes; not an OS sandbox or arbitrary-code analysis.",
+  "accepted_source_sha": "06c995974fe84e1802d8bf9e5e8ef243c5dea420",
+  "run_url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068",
+  "job_url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/38584506068/job/115922765039"
+}

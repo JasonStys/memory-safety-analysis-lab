@@ -99,8 +99,11 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/contracts.md](docs/contracts.md) | Data, ownership and process contracts. |
 | [docs/defects.md](docs/defects.md) | Defect-to-fix teaching guide. |
 | [docs/performance.md](docs/performance.md) | Complexity and performance methodology. |
+| [docs/release.md](docs/release.md) | Source-release and maintenance checklist. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured release C++/Rust pipeline timing; no universal speed claim. |
-| [docs/reports/validation.md](docs/reports/validation.md) | Validation report. |
+| [docs/reports/ci.json](docs/reports/ci.json) | Immutable accepted-source CI snapshot, not a future guarantee. |
+| [docs/reports/sanitizers.json](docs/reports/sanitizers.json) | Actual normalized hosted sanitizer and Rust compile-rejection evidence. |
+| [docs/reports/validation.md](docs/reports/validation.md) | Validation and accepted-source evidence. |
 | [docs/research.md](docs/research.md) | Primary research and implementation choices. |
 | [docs/security.md](docs/security.md) | Security model and reporting policy. |
 | [docs/testing.md](docs/testing.md) | Testing strategy and acceptance gates. |
