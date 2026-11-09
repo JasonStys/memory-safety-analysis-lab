@@ -37,6 +37,16 @@ python -m msal.cli --input path/to/data.bin --output out/another-review
 
 Invalid frame content gives matching ERR metadata; disagreement gives a failed review. Malformed transport/build/IO/deadline failures give exit 2. The normal app never invokes the deliberately faulty specimens. [Usage/help](docs/usage.md) covers setup, formats, troubleshooting and privacy.
 
+## Review a private data corpus
+
+```text
+python -m msal.corpus --input sample-a.bin --input sample-b.bin --input sample-copy.bin --output out/corpus-review --minimize --max-attempts 32
+```
+
+The review deduplicates exact SHA256 content, sorts cases by hash and compares the actual fixed C++/Rust workers with the independent Python reference. Each source remains untouched. Inputs are explicit ordinary nonlinked data files, at most1000 and8MiB combined; no arbitrary executable or compiler path is accepted. New `corpus.json` and inert `corpus.html` show unique/duplicate counts and exact outcomes without source paths or payload bytes.
+
+If a disagreement already exists, optional deterministic deletion reduction preserves the same equality/disagreement partition on **two** evaluations before retaining each change. All disagreements share an attempt cap (1–128) and30second reduction budget, with10seconds maximum per case. Timeouts, unstable reproduction and unattempted cases remain explicitly inconclusive. Worker failures are errors, not findings. A local chunk minimum is not a globally smallest input or proof of identical root cause. Reports retain initial/reduced hashes and lengths; payloads stay private in the original corpus. Rerun the same reducer against that original data to reproduce a retained hash. There is no runtime intentionally defective mode.
+
 ## Validation commands
 
 Create a virtual environment, install the full hash-locked development graph, then:
@@ -102,6 +112,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/release.md](docs/release.md) | Source-release and maintenance checklist. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured release C++/Rust pipeline timing; no universal speed claim. |
 | [docs/reports/ci.json](docs/reports/ci.json) | Immutable accepted-source CI snapshot, not a future guarantee. |
+| [docs/reports/corpus-2026-11-09.md](docs/reports/corpus-2026-11-09.md) | Data corpus and disagreement reduction validation — November 9, 2026. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/sanitizers.json](docs/reports/sanitizers.json) | Actual normalized hosted sanitizer and Rust compile-rejection evidence. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation and accepted-source evidence. |
@@ -112,6 +123,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [msal/\_\_init\_\_.py](msal/__init__.py) | Jason Stys: safe C++/Rust differential analysis and synthetic regression evidence. |
 | [msal/cli.py](msal/cli.py) | Jason Stys: synthetic differential demo or bounded local-data review with inert no-overwrite reports. |
 | [msal/core.py](msal/core.py) | Jason Stys: independent MSL1 reference decoder, deterministic corpus and strict native-result contract. |
+| [msal/corpus.py](msal/corpus.py) | Jason Stys: content-addressed data-only corpus review and budgeted owned-worker disagreement reduction. |
 | [msal/runner.py](msal/runner.py) | Jason Stys: deadline-bounded trusted native subprocesses and three-way differential evidence. |
 | [native/fuzz.cpp](native/fuzz.cpp) | Jason Stys: libFuzzer callback exercises only safe bounded parser code under ASan/UBSan. |
 | [native/main.cpp](native/main.cpp) | Jason Stys: bounded binary batch stdin worker; safe parser metadata only, no arbitrary file execution. |
@@ -136,6 +148,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [specimens/faults.cpp](specimens/faults.cpp) | Jason Stys: intentionally faulty synthetic sanitizer specimens; NEVER part of the default safe build. Execute only through the explicit Linux CI teaching harness; no arbitrary targets or exploit payloads. |
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: actual worker/CLI privacy, no-overwrite output and process/batch failure regressions. |
 | [tests/test\_core.py](tests/test_core.py) | Jason Stys: reference/native protocol bounds, deterministic corpus and malformed-data properties. |
+| [tests/test\_corpus.py](tests/test_corpus.py) | Jason Stys: bounded data corpus and independently controlled disagreement-oracle regressions. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 
 <!-- END FILE GUIDE -->
