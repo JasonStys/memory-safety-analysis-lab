@@ -1,29 +1,30 @@
 """Jason Stys: deadline-bounded trusted native subprocesses and three-way differential evidence."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 38
-# definition: executable — line 41
-# parameter: language — line 41
-# definition: run — line 58
-# parameter: inputs — line 58
-# parameter: language — line 58
-# variable: path — line 60
-# variable: completed — line 63
-# definition: compare — line 71
-# parameter: cases — line 71
-# variable: _ — line 73
-# variable: data — line 73
-# variable: value — line 73
-# variable: expected — line 74
-# variable: value — line 74
-# variable: cpp — line 75
-# variable: rust — line 75
-# variable: rows — line 76
+# variable: ROOT — line 39
+# definition: executable — line 42
+# parameter: language — line 42
+# definition: run — line 59
+# parameter: inputs — line 59
+# parameter: language — line 59
+# parameter: timeout — line 59
+# variable: path — line 67
+# variable: completed — line 70
+# definition: compare — line 82
+# parameter: cases — line 82
 # variable: _ — line 84
-# variable: left — line 84
-# variable: name — line 84
-# variable: right — line 84
-# variable: wanted — line 84
-# variable: row — line 93
+# variable: data — line 84
+# variable: value — line 84
+# variable: expected — line 85
+# variable: value — line 85
+# variable: cpp — line 86
+# variable: rust — line 86
+# variable: rows — line 87
+# variable: _ — line 95
+# variable: left — line 95
+# variable: name — line 95
+# variable: right — line 95
+# variable: wanted — line 95
+# variable: row — line 104
 # END CODE MAP
 
 from __future__ import annotations
@@ -55,13 +56,23 @@ def executable(language: str) -> Path:
     raise ValueError("unknown worker")
 
 
-def run(language: str, inputs: list[bytes]) -> list[Outcome]:
+def run(language: str, inputs: list[bytes], timeout: float = 15) -> list[Outcome]:
     """Run fixed trusted worker with binary data stdin, no shell, ≤15s and bounded output schema."""
+    if (
+        isinstance(timeout, bool)
+        or not isinstance(timeout, (int, float))
+        or not 0.001 <= timeout <= 15
+    ):
+        raise ValueError("worker deadline outside contract")
     path = executable(language)
     if not path.is_file():
         raise ValueError("build safe C++ and Rust workers first")
     completed = subprocess.run(
-        [str(path)], input=batch(inputs), capture_output=True, timeout=15, check=False
+        [str(path)],
+        input=batch(inputs),
+        capture_output=True,
+        timeout=timeout,
+        check=False,
     )
     if completed.returncode:
         raise ValueError("native batch/worker failure")
