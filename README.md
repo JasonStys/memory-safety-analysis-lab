@@ -43,9 +43,9 @@ Invalid frame content gives matching ERR metadata; disagreement gives a failed r
 python -m msal.corpus --input sample-a.bin --input sample-b.bin --input sample-copy.bin --output out/corpus-review --minimize --max-attempts 32
 ```
 
-The review deduplicates exact SHA256 content, sorts cases by hash and compares the actual fixed C++/Rust workers with the independent Python reference. Each source remains untouched. Inputs are explicit ordinary nonlinked data files, at most1000 and8MiB combined; no arbitrary executable or compiler path is accepted. New `corpus.json` and inert `corpus.html` show unique/duplicate counts and exact outcomes without source paths or payload bytes.
+The review deduplicates exact SHA256 content, sorts cases by hash and compares the actual fixed C++/Rust workers with the independent Python reference. Each source remains untouched. Inputs are explicit ordinary nonlinked data files, at most 1000 and 8 MiB combined; no arbitrary executable or compiler path is accepted. New `corpus.json` and inert `corpus.html` show unique/duplicate counts and exact outcomes without source paths or payload bytes.
 
-If a disagreement already exists, optional deterministic deletion reduction preserves the same equality/disagreement partition on **two** evaluations before retaining each change. All disagreements share an attempt cap (1–128) and30second reduction budget, with10seconds maximum per case. Timeouts, unstable reproduction and unattempted cases remain explicitly inconclusive. Worker failures are errors, not findings. A local chunk minimum is not a globally smallest input or proof of identical root cause. Reports retain initial/reduced hashes and lengths; payloads stay private in the original corpus. Rerun the same reducer against that original data to reproduce a retained hash. There is no runtime intentionally defective mode.
+If a disagreement already exists, optional deterministic deletion reduction preserves the same equality/disagreement partition on **two** evaluations before retaining each change. All disagreements share an attempt cap (1–128) and 30 second reduction budget, with 10 seconds maximum per case. Timeouts, unstable reproduction and unattempted cases remain explicitly inconclusive. Worker failures are errors, not findings. A local chunk minimum is not a globally smallest input or proof of identical root cause. Reports retain initial/reduced hashes and lengths; payloads stay private in the original corpus. Rerun the same reducer against that original data to reproduce a retained hash. There is no runtime intentionally defective mode.
 
 ## Validation commands
 
@@ -108,12 +108,16 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/architecture.md](docs/architecture.md) | ADR-001: separate safe analysis from deliberate fault specimens. |
 | [docs/contracts.md](docs/contracts.md) | Data, ownership and process contracts. |
 | [docs/defects.md](docs/defects.md) | Defect-to-fix teaching guide. |
+| [docs/handbook.md](docs/handbook.md) | Memory Safety Analysis Lab handbook. |
 | [docs/performance.md](docs/performance.md) | Complexity and performance methodology. |
 | [docs/release.md](docs/release.md) | Source-release and maintenance checklist. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured release C++/Rust pipeline timing; no universal speed claim. |
 | [docs/reports/ci.json](docs/reports/ci.json) | Immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/corpus-2026-11-09.md](docs/reports/corpus-2026-11-09.md) | Data corpus and disagreement reduction validation — November 9, 2026. |
+| [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
+| [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
 | [docs/reports/sanitizers.json](docs/reports/sanitizers.json) | Actual normalized hosted sanitizer and Rust compile-rejection evidence. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation and accepted-source evidence. |
 | [docs/research.md](docs/research.md) | Primary research and implementation choices. |
@@ -142,6 +146,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [scripts/code\_map.py](scripts/code_map.py) | Jason Stys: generate exact definition/variable line maps and verify Python function/class contracts. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Jason Stys: exact tracked-file README purpose inventory, unknown files fail rather than receive guesses. |
 | [scripts/fuzz.py](scripts/fuzz.py) | Jason Stys: actual coverage-guided libFuzzer campaign on safe C++ parser, never faulty specimens. |
+| [scripts/publication\_text.py](scripts/publication_text.py) | Jason Stys: inspect only named reviewed Office editions without hiding their XML. |
 | [scripts/sanitizers.py](scripts/sanitizers.py) | Jason Stys: explicit trusted Linux specimen assertions, safe runtime sanitizer checks and coverage. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Jason Stys: safe default-build isolation, private-state exclusion, action pins and exact local links. |
@@ -149,8 +154,15 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: actual worker/CLI privacy, no-overwrite output and process/batch failure regressions. |
 | [tests/test\_core.py](tests/test_core.py) | Jason Stys: reference/native protocol bounds, deterministic corpus and malformed-data properties. |
 | [tests/test\_corpus.py](tests/test_corpus.py) | Jason Stys: bounded data corpus and independently controlled disagreement-oracle regressions. |
+| [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 
 <!-- END FILE GUIDE -->
 
 MIT licensed. Passing bounded examples and campaigns are evidence for these inputs, not certification or proof that all possible programs/inputs are safe.
+
+## Documentation editions
+
+Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
+
+[Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
