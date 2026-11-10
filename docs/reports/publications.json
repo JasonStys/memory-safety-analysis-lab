@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "project": "memory-safety-analysis-lab",
+  "author": "Jason Stys",
+  "editionDate": "2026-11-09",
+  "sourceBaseline": "dc68386d9cd6ec62a9ce9d02723f37bb43ad2935",
+  "sourceUrl": "https://github.com/JasonStys/memory-safety-analysis-lab/tree/dc68386d9cd6ec62a9ce9d02723f37bb43ad2935",
+  "functionalEvidenceBaseline": "dc68386d9cd6ec62a9ce9d02723f37bb43ad2935",
+  "evidenceObservedAt": "2026-11-10T05:25:40.628667+00:00",
+  "workflowEvidence": [
+    {
+      "conclusion": "success",
+      "databaseId": 42711566499,
+      "event": "push",
+      "headSha": "dc68386d9cd6ec62a9ce9d02723f37bb43ad2935",
+      "name": "CodeQL",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/42711566499"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42711566151,
+      "event": "push",
+      "headSha": "dc68386d9cd6ec62a9ce9d02723f37bb43ad2935",
+      "name": "Validate",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/memory-safety-analysis-lab/actions/runs/42711566151"
+    }
+  ],
+  "summary": "Deduplicate private corpus inputs and reduce twice-confirmed owned-parser disagreements under shared time/attempt budgets.",
+  "rationale": "Produces reproducible smaller debugging cases while preserving unstable and inconclusive outcomes.",
+  "limitations": [
+    "Reduction preserves a twice-confirmed agreement/disagreement partition, not necessarily the same root cause or a globally minimal input.",
+    "Unstable and inconclusive executions remain distinct from reproducible findings under shared attempt/time budgets.",
+    "Exported reduction reports contain hashes and lengths rather than source paths or payload bytes; the library can return bytes to its caller."
+  ],
+  "documents": [
+    {
+      "filename": "project-guide.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 43878,
+      "sha256": "56265b1ddf004f211add36f144e819c9d4dd10de91a6eb2ba211c200dd0f3b37",
+      "sourceBaseline": "dc68386d9cd6ec62a9ce9d02723f37bb43ad2935",
+      "visualReview": {
+        "approved": true,
+        "method": "Every rendered page individually viewed at readable original resolution",
+        "pageCount": 4,
+        "renderedPageSha256": {
+          "page-1.png": "7efca95a543f6b395a3fb1fc1e3457ebd806996f1a73c499e2c6ebde2b9d59bd",
+          "page-2.png": "908968edfe92e1907f64815305c48721ea81b5e1607e53f2ada68734a475d486",
+          "page-3.png": "b08d70f524664f9f8a7af0afc0b75fcd1b2884e361f02e02aecbf0e0c9505764",
+          "page-4.png": "3e28590bed06563c1b64967f3e9238ccff560b454427c393def0567d379f7472"
+        }
+      }
+    }
+  ],
+  "scope": "Reviewed documentation editions of the cited source. Checksums identify bytes, not authorship. Historical measurements retain their own dates; integration CI must be checked separately."
+}

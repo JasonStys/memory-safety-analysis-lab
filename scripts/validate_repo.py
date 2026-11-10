@@ -1,17 +1,17 @@
 """Jason Stys: safe default-build isolation, private-state exclusion, action pins and exact local links."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 23
-# definition: main — line 26
-# variable: names — line 28
-# variable: name — line 41
-# variable: path — line 42
-# variable: text — line 47
-# variable: target — line 52
-# variable: action — line 58
-# variable: word — line 62
-# variable: cmake — line 74
-# variable: graph — line 76
-# variable: codeql — line 83
+# variable: ROOT — line 28
+# definition: main — line 31
+# variable: names — line 33
+# variable: name — line 46
+# variable: path — line 47
+# variable: text — line 52
+# variable: target — line 57
+# variable: action — line 63
+# variable: word — line 67
+# variable: cmake — line 79
+# variable: graph — line 81
+# variable: codeql — line 88
 # END CODE MAP
 
 import json
@@ -19,6 +19,11 @@ import re
 import subprocess
 import tomllib
 from pathlib import Path
+
+if __package__:
+    from .publication_text import public_text
+else:
+    from publication_text import public_text
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -44,7 +49,7 @@ def main() -> None:
             ("out/", "target/", ".venv/", ".tools/")
         )
         assert not re.search(r"\.(?:pem|key|env|profraw|profdata)(?:$|[.-])", name)
-        text = path.read_text(encoding="utf-8")
+        text = public_text(path, ROOT)
         assert not re.search(
             r"(?:ghp_|github_pat_)[A-Za-z0-9]{20,}|BEGIN [A-Z ]*PRIVATE KEY", text
         )
