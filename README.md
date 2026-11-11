@@ -18,6 +18,14 @@ This is a teaching/assurance lab, **not an arbitrary-code runner, universal vuln
 - **Dynamic assurance:** safe runtime ASan/UBSan/LSan checks, ≥95% C++ runtime line-coverage gate, and 20,000 coverage-guided libFuzzer runs on the safe parser. Rust also has 100,000 deterministic mutation cases per debug/release profile.
 - **Reproducible evidence:** input SHA256, exact expected/observed metadata, scoped tool reports, release benchmarks, full file/symbol inventories and cross-platform CI. Reports never export payloads or source paths.
 
+## Windows desktop workbench
+
+The application provides real project controls, durable history and exact evidence export, created by Jason Stys. The one-file **MemorySafetyAnalysisLab.exe** bundles patched CPython 3.14.10, Tcl/Tk and the actual project runtime; end users need no Python, Node or command setup. This is a portable application, not an installer or an Authenticode-signed product. The source recipe and actual acceptance evidence are available now; public download/install status is a separate release decision.
+
+Choose the original 243-case corpus, select multiple authorized MSL1 binary data files, or populate an editable prepared exercise. Run the original safe C++ and Rust workers against the independent Python reference. Valid data and consistent parser errors are both meaningful outcomes; a disagreement remains a failed comparison and a process failure is an error. Inspect exact metadata, hashes, duplicate counts and reduction scope, then export the saved evidence without raw payloads. Optional reduction uses the existing shared attempt/deadline budget and only starts when a disagreement already exists.
+
+[Desktop usage and privacy](docs/windows-app.md) · [Native validation record](docs/reports/native-workbench-2026-11-11.md). Existing CLI commands and explicit custom output paths remain supported.
+
 ## Quick start
 
 Requires Python 3.12–3.14, CMake ≥3.24, a C++20 compiler and Rust 1.98.1 through rustup. Windows uses Visual Studio C++ build tools compatible with installed CMake (2022 or newer); Linux/macOS use their installed GCC/Clang toolchain. No Python runtime dependencies.
@@ -115,6 +123,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/reports/ci.json](docs/reports/ci.json) | Immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/corpus-2026-11-09.md](docs/reports/corpus-2026-11-09.md) | Data corpus and disagreement reduction validation — November 9, 2026. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/native-workbench-2026-11-11.md](docs/reports/native-workbench-2026-11-11.md) | Native workbench validation — November 11, 2026. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
@@ -124,10 +133,18 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/security.md](docs/security.md) | Security model and reporting policy. |
 | [docs/testing.md](docs/testing.md) | Testing strategy and acceptance gates. |
 | [docs/usage.md](docs/usage.md) | Setup, demos and troubleshooting. |
+| [docs/windows-app.md](docs/windows-app.md) | Windows application: memory-safety-analysis-lab. |
+| [licenses/RUST-COPYRIGHT-library.html](licenses/RUST-COPYRIGHT-library.html) | Unmodified Rust standard-library copyright and dependency notices retained for the actual native worker. |
 | [msal/\_\_init\_\_.py](msal/__init__.py) | Jason Stys: safe C++/Rust differential analysis and synthetic regression evidence. |
 | [msal/cli.py](msal/cli.py) | Jason Stys: synthetic differential demo or bounded local-data review with inert no-overwrite reports. |
 | [msal/core.py](msal/core.py) | Jason Stys: independent MSL1 reference decoder, deterministic corpus and strict native-result contract. |
 | [msal/corpus.py](msal/corpus.py) | Jason Stys: content-addressed data-only corpus review and budgeted owned-worker disagreement reduction. |
+| [msal/desktop.py](msal/desktop.py) | Native offline workbench: real project inputs, analysis, searchable evidence, history and export. Jason Stys. |
+| [msal/desktop\_io.py](msal/desktop_io.py) | Bounded regular descriptor reads and strict finite JSON for owner-local desktop state. Jason Stys. |
+| [msal/desktop\_project.py](msal/desktop_project.py) | Graphical data-only differential/corpus review with the original C++/Rust/Python engines. Jason Stys. |
+| [msal/desktop\_state.py](msal/desktop_state.py) | Owner-local desktop profile, bounded durable bundles and non-overwriting export. Jason Stys. |
+| [msal/inputs.py](msal/inputs.py) | Bounded stable ordinary-file reads and streaming tool hashes for offline identity inputs. Jason Stys. |
+| [msal/native\_worker.py](msal/native_worker.py) | Owned fixed safe-parser process boundary for the frozen app, never arbitrary user code. Jason Stys. |
 | [msal/runner.py](msal/runner.py) | Jason Stys: deadline-bounded trusted native subprocesses and three-way differential evidence. |
 | [native/fuzz.cpp](native/fuzz.cpp) | Jason Stys: libFuzzer callback exercises only safe bounded parser code under ASan/UBSan. |
 | [native/main.cpp](native/main.cpp) | Jason Stys: bounded binary batch stdin worker; safe parser metadata only, no arbitrary file execution. |
@@ -137,23 +154,36 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [pyproject.toml](pyproject.toml) | Jason Stys: strict Python tooling and all-runtime-module branch/statement coverage. |
 | [requirements-dev.in](requirements-dev.in) | Jason Stys: exact development-only tools; Python runtime uses only the standard library. |
 | [requirements-dev.lock](requirements-dev.lock) | Universal full hash-locked Python development graph. |
+| [requirements-native.lock](requirements-native.lock) | Exact hash-locked portable freezer graph, separate from the project runtime. |
 | [rust-toolchain.toml](rust-toolchain.toml) | Jason Stys: fixed tested compiler, rustfmt and clippy rather than floating stable. |
 | [rust/lib.rs](rust/lib.rs) | Jason Stys: safe Rust parser, checked length arithmetic and generation-safe owned handles. |
 | [rust/main.rs](rust/main.rs) | Jason Stys: bounded binary batch worker emitting only safe Rust parser metadata. |
 | [rust/tests.rs](rust/tests.rs) | Jason Stys: native Rust parser/ownership/bounds invariants and deterministic mutation exercise. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Jason Stys: repeated release C++/Rust process-inclusive performance comparisons on identical data. |
 | [scripts/build.py](scripts/build.py) | Jason Stys: explicit default-safe CMake and Rust release builds; no specimen targets or global installs. |
+| [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
 | [scripts/code\_map.py](scripts/code_map.py) | Jason Stys: generate exact definition/variable line maps and verify Python function/class contracts. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Jason Stys: exact tracked-file README purpose inventory, unknown files fail rather than receive guesses. |
 | [scripts/fuzz.py](scripts/fuzz.py) | Jason Stys: actual coverage-guided libFuzzer campaign on safe C++ parser, never faulty specimens. |
+| [scripts/native\_acceptance.py](scripts/native_acceptance.py) | Actual final portable widgets/core/native-window acceptance with independent oracles. Jason Stys. |
+| [scripts/native\_common.py](scripts/native_common.py) | Actual patched Python/Tcl/Tk/PyInstaller runtime notices and authored portable icon. Jason Stys. |
+| [scripts/native\_entry.py](scripts/native_entry.py) | Launch the actual bundled offline project workbench; no setup shell commands. Jason Stys. |
 | [scripts/publication\_text.py](scripts/publication_text.py) | Jason Stys: inspect only named reviewed Office editions without hiding their XML. |
 | [scripts/sanitizers.py](scripts/sanitizers.py) | Jason Stys: explicit trusted Linux specimen assertions, safe runtime sanitizer checks and coverage. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
+| [scripts/test\_native\_app.py](scripts/test_native_app.py) | Run the real frozen workbench twice with an owned synthetic profile and exact bundle persistence. Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Jason Stys: safe default-build isolation, private-state exclusion, action pins and exact local links. |
 | [specimens/faults.cpp](specimens/faults.cpp) | Jason Stys: intentionally faulty synthetic sanitizer specimens; NEVER part of the default safe build. Execute only through the explicit Linux CI teaching harness; no arbitrary targets or exploit payloads. |
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: actual worker/CLI privacy, no-overwrite output and process/batch failure regressions. |
 | [tests/test\_core.py](tests/test_core.py) | Jason Stys: reference/native protocol bounds, deterministic corpus and malformed-data properties. |
 | [tests/test\_corpus.py](tests/test_corpus.py) | Jason Stys: bounded data corpus and independently controlled disagreement-oracle regressions. |
+| [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
+| [tests/test\_desktop\_io.py](tests/test_desktop_io.py) | Private state JSON and bounded descriptor-read boundary cases with actual file bytes. Jason Stys. |
+| [tests/test\_desktop\_project.py](tests/test_desktop_project.py) | Real safe-worker data oracles, bounded private-corpus controls and payload-free evidence. Jason Stys. |
+| [tests/test\_desktop\_state.py](tests/test_desktop_state.py) | Independent offline desktop ownership, byte-bound, SQLite and non-overwrite regressions. Jason Stys. |
+| [tests/test\_native\_inputs.py](tests/test_native_inputs.py) | Actual same-descriptor input bounds and ownership-change cases for selected offline reports. Jason Stys. |
+| [tests/test\_native\_worker.py](tests/test_native_worker.py) | Frozen fixed-worker authority, exact transport, timeout ownership and source dispatch controls. Jason Stys. |
+| [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 

@@ -1,94 +1,117 @@
 # Jason Stys: cross-platform safe builds, real sanitizers/fuzzing and locked security gates, artifact/cache free.
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# parameter: name — line 93
-# parameter: on — line 94
-# parameter: push — line 95
-# parameter: branches — line 96
-# parameter: pull_request — line 97
-# parameter: workflow_dispatch — line 98
-# parameter: permissions — line 99
-# parameter: contents — line 100
-# parameter: concurrency — line 101
-# parameter: group — line 102
-# parameter: cancel-in-progress — line 103
-# parameter: jobs — line 104
-# parameter: quality — line 105
-# parameter: name — line 106
-# parameter: runs-on — line 107
-# parameter: timeout-minutes — line 108
-# parameter: strategy — line 109
-# parameter: fail-fast — line 110
-# parameter: matrix — line 111
-# parameter: include — line 112
-# parameter: steps — line 117
-# parameter: uses — line 118
-# parameter: with — line 119
-# parameter: persist-credentials — line 120
-# parameter: uses — line 121
-# parameter: with — line 122
-# parameter: python-version — line 123
-# parameter: run — line 124
-# parameter: run — line 125
-# parameter: run — line 126
-# parameter: run — line 127
-# parameter: run — line 128
-# parameter: run — line 129
-# parameter: run — line 130
-# parameter: run — line 131
-# parameter: run — line 132
-# parameter: run — line 133
-# parameter: run — line 134
-# parameter: run — line 135
-# parameter: run — line 136
-# parameter: run — line 137
-# parameter: native-assurance — line 138
-# parameter: name — line 139
-# parameter: runs-on — line 140
-# parameter: timeout-minutes — line 141
-# parameter: steps — line 142
-# parameter: uses — line 143
-# parameter: with — line 144
-# parameter: persist-credentials — line 145
-# parameter: uses — line 146
-# parameter: with — line 147
-# parameter: python-version — line 148
+# parameter: name — line 116
+# parameter: on — line 117
+# parameter: push — line 118
+# parameter: branches — line 119
+# parameter: pull_request — line 120
+# parameter: workflow_dispatch — line 121
+# parameter: permissions — line 122
+# parameter: contents — line 123
+# parameter: concurrency — line 124
+# parameter: group — line 125
+# parameter: cancel-in-progress — line 126
+# parameter: jobs — line 127
+# parameter: quality — line 128
+# parameter: name — line 129
+# parameter: runs-on — line 130
+# parameter: timeout-minutes — line 131
+# parameter: strategy — line 132
+# parameter: fail-fast — line 133
+# parameter: matrix — line 134
+# parameter: include — line 135
+# parameter: steps — line 140
+# parameter: uses — line 141
+# parameter: with — line 142
+# parameter: persist-credentials — line 143
+# parameter: uses — line 144
+# parameter: with — line 145
+# parameter: python-version — line 146
+# parameter: run — line 147
+# parameter: run — line 148
 # parameter: run — line 149
 # parameter: run — line 150
 # parameter: run — line 151
 # parameter: run — line 152
-# parameter: run — line 153
-# parameter: benchmark — line 154
-# parameter: name — line 155
-# parameter: runs-on — line 156
-# parameter: timeout-minutes — line 157
-# parameter: steps — line 158
-# parameter: uses — line 159
-# parameter: with — line 160
-# parameter: persist-credentials — line 161
-# parameter: uses — line 162
-# parameter: with — line 163
-# parameter: python-version — line 164
-# parameter: run — line 165
-# parameter: run — line 166
-# parameter: run — line 167
-# parameter: security — line 168
-# parameter: name — line 169
-# parameter: runs-on — line 170
-# parameter: timeout-minutes — line 171
-# parameter: steps — line 172
-# parameter: uses — line 173
-# parameter: with — line 174
-# parameter: persist-credentials — line 175
-# parameter: fetch-depth — line 176
-# parameter: uses — line 177
-# parameter: with — line 178
-# parameter: python-version — line 179
-# parameter: run — line 180
-# parameter: run — line 181
-# parameter: run — line 182
-# parameter: run — line 183
-# parameter: run — line 184
-# parameter: run — line 185
+# parameter: if — line 153
+# parameter: run — line 154
+# parameter: run — line 155
+# parameter: run — line 156
+# parameter: run — line 157
+# parameter: run — line 158
+# parameter: run — line 159
+# parameter: run — line 160
+# parameter: run — line 161
+# parameter: run — line 162
+# parameter: native-assurance — line 163
+# parameter: name — line 164
+# parameter: runs-on — line 165
+# parameter: timeout-minutes — line 166
+# parameter: steps — line 167
+# parameter: uses — line 168
+# parameter: with — line 169
+# parameter: persist-credentials — line 170
+# parameter: uses — line 171
+# parameter: with — line 172
+# parameter: python-version — line 173
+# parameter: run — line 174
+# parameter: run — line 175
+# parameter: run — line 176
+# parameter: run — line 177
+# parameter: run — line 178
+# parameter: benchmark — line 179
+# parameter: name — line 180
+# parameter: runs-on — line 181
+# parameter: timeout-minutes — line 182
+# parameter: steps — line 183
+# parameter: uses — line 184
+# parameter: with — line 185
+# parameter: persist-credentials — line 186
+# parameter: uses — line 187
+# parameter: with — line 188
+# parameter: python-version — line 189
+# parameter: run — line 190
+# parameter: run — line 191
+# parameter: run — line 192
+# parameter: security — line 193
+# parameter: name — line 194
+# parameter: runs-on — line 195
+# parameter: timeout-minutes — line 196
+# parameter: steps — line 197
+# parameter: uses — line 198
+# parameter: with — line 199
+# parameter: persist-credentials — line 200
+# parameter: fetch-depth — line 201
+# parameter: uses — line 202
+# parameter: with — line 203
+# parameter: python-version — line 204
+# parameter: run — line 205
+# parameter: run — line 206
+# parameter: run — line 207
+# parameter: run — line 208
+# parameter: run — line 209
+# parameter: run — line 210
+# parameter: portable-windows — line 212
+# parameter: name — line 213
+# parameter: runs-on — line 214
+# parameter: timeout-minutes — line 215
+# parameter: env — line 216
+# parameter: PIP_NO_CACHE_DIR — line 217
+# parameter: steps — line 218
+# parameter: uses — line 219
+# parameter: with — line 220
+# parameter: persist-credentials — line 221
+# parameter: uses — line 222
+# parameter: with — line 223
+# parameter: python-version — line 224
+# parameter: run — line 225
+# parameter: run — line 226
+# parameter: run — line 227
+# parameter: run — line 228
+# parameter: name — line 229
+# parameter: run — line 230
+# parameter: name — line 231
+# parameter: run — line 232
 # END CODE MAP
 name: Validate
 on:
@@ -127,6 +150,8 @@ jobs:
       - run: cargo clippy --locked --all-targets -- -D warnings
       - run: cargo test --locked
       - run: cargo test --release --locked
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y python3-tk
       - run: python -m pip install --require-hashes -r requirements-dev.lock
       - run: python -m ruff check .
       - run: python -m ruff format --check .
@@ -183,3 +208,25 @@ jobs:
       - run: python scripts/scanners.py actionlint
       - run: .tools/gitleaks git . --redact --no-banner
       - run: .tools/actionlint
+
+  portable-windows:
+    name: Windows / actual offline native workbench
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      PIP_NO_CACHE_DIR: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14.10'
+      - run: rustup toolchain install 1.98.1 --profile minimal
+      - run: python -m pip install --require-hashes -r requirements-dev.lock -r requirements-native.lock
+      - run: python -m pip check
+      - run: python -m pip_audit -r requirements-native.lock --disable-pip --no-deps
+      - name: Build actual patched runtime, project engines and original notices
+        run: python scripts/build_native.py
+      - name: Use compiled app controls, independent result oracles, export and two-process reopen
+        run: python scripts/test_native_app.py

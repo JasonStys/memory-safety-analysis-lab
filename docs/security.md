@@ -11,3 +11,8 @@ Inert HTML escapes every report value; CSP default-src none, base-uri none, form
 Full-SHA Actions, no persisted checkout credentials, locked development hashes, official hash-verified scanner binaries, disabled artifact/database uploads and explicit CodeQL extraction/dependency-cache disabling reduce CI exposure. Early verification caches remain pending fresh deletion approval. Deliberate defects are public educational examples, not real secrets or vulnerabilities in another system. Raw runtime diagnostics stay in ignored out/; normalized actual evidence can be reviewed for publication.
 
 Do not post credentials, customer code/data, local memory addresses or private paths in public issues. Share a minimal synthetic reproducer, version and stable error code through [GitHub](https://github.com/JasonStys) or contact [Jason Stys on LinkedIn](https://www.linkedin.com/in/jason-stys-31b30b351/). No staffed support SLA, compliance certification or universal-safety guarantee is promised.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). The GUI does not accept source code, executable/compiler paths, plugins, unsafe specimens or network targets. It never claims that agreement proves universal memory safety. Sanitizers, compile-rejection controls, C++ coverage, libFuzzer and Rust mutation tests remain separate original CI gates. The shipped two fixed safe workers are the actual compiled engines; no Python replacement is used in frozen review.
