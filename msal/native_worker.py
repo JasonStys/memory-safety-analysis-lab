@@ -1,22 +1,23 @@
 """Owned fixed safe-parser process boundary for the frozen app, never arbitrary user code. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: run_owned — line 26
-# parameter: data — line 26
-# parameter: path — line 26
-# parameter: timeout — line 26
-# variable: names — line 31
-# variable: identity — line 44
-# variable: environment — line 49
-# variable: key — line 51
-# variable: process — line 58
-# variable: _ — line 69
-# variable: output — line 69
+# definition: run_owned — line 27
+# parameter: data — line 27
+# parameter: path — line 27
+# parameter: timeout — line 27
+# variable: names — line 32
+# variable: identity — line 45
+# variable: environment — line 50
+# variable: key — line 52
+# variable: process — line 59
+# variable: _ — line 70
+# variable: output — line 70
 # END CODE MAP
 
 from __future__ import annotations
 
 import os
 import subprocess
+import time
 from pathlib import Path
 
 from .desktop_io import Rejected
@@ -68,8 +69,14 @@ def run_owned(path: Path, data: bytes, timeout: float) -> bytes:
         try:
             output, _ = process.communicate(input=data, timeout=timeout)
         except subprocess.TimeoutExpired:
-            process.kill()
-            process.communicate(timeout=5)
+            try:
+                process.kill()
+            except OSError:
+                pass
+            try:
+                process.communicate(timeout=5)
+            except (subprocess.TimeoutExpired, OSError):
+                pass  # The final owned cleanup below retains the original failure.
             raise
         if process.returncode != 0 or len(output) > 128 * 1024:
             raise Rejected("owned safe worker failed or exceeded output contract")
@@ -77,5 +84,19 @@ def run_owned(path: Path, data: bytes, timeout: float) -> bytes:
     finally:
         # No independently discovered process/listener is adopted or signaled.
         if process.poll() is None:
-            process.kill()
-            process.communicate(timeout=5)
+            try:
+                process.kill()
+            except OSError:
+                pass
+            try:
+                process.communicate(timeout=5)
+            except (subprocess.TimeoutExpired, OSError):
+                # A requested kill or two expired drains is not exit proof. Keep
+                # this same GUI worker/profile alive until the exact child is
+                # reaped, then propagate the original analysis failure.
+                while True:
+                    try:
+                        process.communicate(timeout=1)
+                        break
+                    except (subprocess.TimeoutExpired, OSError):
+                        time.sleep(0.05)
