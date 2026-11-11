@@ -54,3 +54,8 @@ The reviewed source is [`dc68386d9cd6ec62a9ce9d02723f37bb43ad2935`](https://gith
 ## Maintaining these editions
 
 Update the editable usage/design/test documents first. Rebuild and visually review every Word page and workbook tab before replacing an edition; verify the exact binary digests and evidence source in publications.json. Keep account data, logs with secrets, installed-app state and private test stores out of documentation. Source and release assets retain their existing security and licensing boundaries.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). The GUI does not accept source code, executable/compiler paths, plugins, unsafe specimens or network targets. It never claims that agreement proves universal memory safety. Sanitizers, compile-rejection controls, C++ coverage, libFuzzer and Rust mutation tests remain separate original CI gates. The shipped two fixed safe workers are the actual compiled engines; no Python replacement is used in frozen review.

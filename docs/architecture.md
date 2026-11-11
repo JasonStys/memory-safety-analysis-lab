@@ -26,3 +26,8 @@ Faulty examples never enter CMake's target graph or Cargo's source graph. CodeQL
 ## Consequences and extension rules
 
 New defect classes require a minimal synthetic specimen, exact diagnostic assertion, documented root cause/fix and repaired regression. New binary fields require matching contracts, independent reference cases and fuzz seeds. Keep variable/file maps current after formatting. Preserve raw generated diagnostics privately; publish normalized actual evidence only. Do not claim proof from agreement: multiple implementations may share a misunderstood specification.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). The GUI does not accept source code, executable/compiler paths, plugins, unsafe specimens or network targets. It never claims that agreement proves universal memory safety. Sanitizers, compile-rejection controls, C++ coverage, libFuzzer and Rust mutation tests remain separate original CI gates. The shipped two fixed safe workers are the actual compiled engines; no Python replacement is used in frozen review.

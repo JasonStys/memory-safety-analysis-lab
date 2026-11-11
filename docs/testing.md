@@ -13,3 +13,8 @@ libFuzzer performs 20,000 coverage-guided safe-parser runs with seed 12345, ≤6
 All four Python runtime modules are included in the ≥95% combined statement/branch gate. Ruff, strict mypy, Rust fmt/clippy, C++ warning-as-error builds, Clang 18 formatting, full locked graph audit, full-history Gitleaks, actionlint and exact symbol/file/privacy/link gates are required. CI matrices cover Linux Python 3.12/3.14, Windows 3.14 and macOS 3.14.
 
 CodeQL security-extended analyzes Python and manually built safe C++; faulty specimens are not built there, and no repaired-code alerts are suppressed. Rust has explicit native/ownership/tool checks, not a claimed Rust CodeQL scan. Windows local results and hosted Linux sanitizer/coverage/fuzz evidence are distinguished in [validation](reports/validation.md). Each final-main job must pass, including documentation changes.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). The GUI does not accept source code, executable/compiler paths, plugins, unsafe specimens or network targets. It never claims that agreement proves universal memory safety. Sanitizers, compile-rejection controls, C++ coverage, libFuzzer and Rust mutation tests remain separate original CI gates. The shipped two fixed safe workers are the actual compiled engines; no Python replacement is used in frozen review.

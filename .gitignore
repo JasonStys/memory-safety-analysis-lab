@@ -20,3 +20,6 @@ timeout-*
 *.env
 *.key
 *.pem
+
+release/
+*.spec

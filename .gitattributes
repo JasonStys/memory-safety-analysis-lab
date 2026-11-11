@@ -1,3 +1,9 @@
 * text=auto eol=lf
 *.docx binary
 *.xlsx binary
+
+# Exact upstream Rust component inventory; authored source still uses normal whitespace checks.
+licenses/RUST-COPYRIGHT-library.html -text -whitespace
+
+# Verbatim third-party license bytes; authored/privacy checks remain active.
+licenses/MSVC-STL-LICENSE.txt -text -whitespace

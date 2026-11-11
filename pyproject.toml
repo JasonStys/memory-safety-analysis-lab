@@ -1,7 +1,7 @@
 # Jason Stys: strict Python tooling and all-runtime-module branch/statement coverage.
 [project]
 name = "memory-safety-analysis-lab"
-version = "1.0.0"
+version = "1.1.0"
 description = "Safe C++/Rust memory analysis and synthetic regression evidence by Jason Stys"
 requires-python = ">=3.12"
 dependencies = []
