@@ -1,76 +1,79 @@
 """Graphical data-only differential/corpus review with the original C++/Rust/Python engines. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 91
-# variable: PRODUCT — line 92
-# variable: PROFILE — line 92
-# variable: TITLE — line 93
-# variable: VERSION — line 93
-# variable: COLUMNS — line 94
-# variable: RESOURCES — line 95
-# variable: RESOURCE_LIMITS — line 102
-# variable: MODES — line 103
-# variable: REVIEW_MODE — line 108
-# variable: CHOICES — line 109
-# variable: FIELDS — line 122
-# variable: ACTIVE_FIELDS — line 128
-# variable: SCENARIOS — line 133
-# variable: HELP — line 144
-# definition: scenario — line 149
-# parameter: name — line 149
-# variable: index — line 153
-# definition: prepared — line 163
-# parameter: name — line 163
-# variable: valid — line 165
-# variable: choices — line 168
-# definition: analyze — line 183
-# parameter: parameters — line 184
-# parameter: stage — line 184
-# parameter: state — line 184
-# variable: mode — line 188
-# variable: cases — line 192
-# variable: result — line 193
-# variable: data — line 195
-# variable: name — line 195
-# variable: files — line 197
-# variable: reduction — line 201
-# variable: submitted — line 201
-# variable: unique — line 201
-# variable: raw_attempts — line 207
-# variable: reduction — line 214
-# variable: paths — line 218
-# variable: value — line 220
-# variable: raw — line 226
-# variable: total — line 227
-# variable: path — line 228
-# variable: data — line 229
-# variable: total — line 230
-# variable: raw — line 235
-# variable: data — line 236
-# variable: copies — line 238
-# variable: paths — line 240
-# variable: data — line 241
-# variable: index — line 241
-# variable: path — line 242
-# variable: output — line 245
-# variable: result — line 246
-# variable: files — line 249
+# variable: ROOT — line 94
+# variable: PRODUCT — line 95
+# variable: PROFILE — line 95
+# variable: TITLE — line 96
+# variable: VERSION — line 96
+# variable: COLUMNS — line 97
+# variable: RESOURCES — line 103
+# variable: RESOURCE_LIMITS — line 110
+# variable: MODES — line 111
+# variable: REVIEW_MODE — line 116
+# variable: CHOICES — line 117
+# variable: FIELDS — line 130
+# variable: ACTIVE_FIELDS — line 136
+# variable: SCENARIOS — line 141
+# variable: HELP — line 152
+# definition: scenario — line 157
+# parameter: name — line 157
+# variable: index — line 161
+# definition: prepared — line 171
+# parameter: name — line 171
+# variable: valid — line 173
+# variable: choices — line 176
+# definition: analyze — line 191
+# parameter: parameters — line 192
+# parameter: stage — line 192
+# parameter: state — line 192
+# variable: mode — line 196
+# variable: cases — line 200
+# variable: result — line 201
+# variable: data — line 203
+# variable: name — line 203
+# variable: files — line 205
+# variable: reduction — line 209
+# variable: submitted — line 209
+# variable: unique — line 209
+# variable: raw_attempts — line 215
+# variable: reduction — line 222
+# variable: paths — line 226
+# variable: value — line 228
+# variable: raw — line 234
+# variable: total — line 235
+# variable: path — line 236
+# variable: data — line 237
+# variable: total — line 238
+# variable: raw — line 243
+# variable: data — line 244
+# variable: copies — line 246
+# variable: paths — line 248
+# variable: data — line 249
+# variable: index — line 249
 # variable: path — line 250
-# variable: submitted — line 252
-# variable: unique — line 252
-# variable: notes — line 253
-# variable: disagreements — line 262
-# variable: row — line 262
-# definition: views — line 270
-# parameter: files — line 270
-# variable: report — line 272
-# variable: row — line 276
-# variable: row — line 278
-# variable: row — line 281
-# definition: cells — line 289
-# parameter: row — line 289
-# variable: cpp — line 292
-# variable: rust — line 292
-# variable: wanted — line 292
+# variable: output — line 253
+# variable: result — line 254
+# variable: files — line 257
+# variable: path — line 258
+# variable: submitted — line 260
+# variable: unique — line 260
+# variable: notes — line 261
+# variable: disagreements — line 270
+# variable: row — line 270
+# definition: views — line 278
+# parameter: files — line 278
+# variable: report — line 280
+# variable: row — line 284
+# variable: row — line 286
+# variable: row — line 289
+# definition: cells — line 297
+# parameter: row — line 297
+# variable: cpp — line 300
+# variable: rust — line 300
+# variable: wanted — line 300
+# variable: case — line 301
+# definition: outcome_label — line 316
+# parameter: outcome — line 316
 # END CODE MAP
 
 from __future__ import annotations
@@ -91,7 +94,12 @@ from .runner import compare
 ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
 PRODUCT, PROFILE = "memory-safety-analysis-lab", "MemorySafetyAnalysisLab"
 TITLE, VERSION = "Memory Safety Analysis Workbench", "1.1.0"
-COLUMNS = ("Case / evidence", "Independent Python", "C++ / Rust", "Agreement / scope")
+COLUMNS = (
+    "Case / evidence",
+    "Python: records / bytes",
+    "C++ | Rust: records / bytes",
+    "Agreement / scope",
+)
 RESOURCES = (
     "runtime/parser-cpp.exe",
     "runtime/parser-rust.exe",
@@ -287,13 +295,14 @@ def views(files: dict[str, bytes]) -> dict[str, list[dict[str, Any]]]:
 
 
 def cells(row: dict[str, Any]) -> tuple[str, str, str, str]:
-    """Render literal metadata only; equality and parser rejection are distinct from universal safety."""
+    """Summarize literal outcomes legibly; full hashes/fingerprints stay available in selected JSON detail."""
     if row.get("kind") == "case":
         wanted, cpp, rust = row["expected"], row["cpp"], row["rust"]
+        case = str(row["case"])
         return (
-            str(row["case"]),
-            str(wanted),
-            str(cpp) + " / " + str(rust),
+            case[:16] + "…" if len(case) == 64 else case,
+            outcome_label(wanted),
+            outcome_label(cpp) + " | " + outcome_label(rust),
             "AGREEMENT" if row["matches"] else "DISAGREEMENT",
         )
     return (
@@ -302,3 +311,10 @@ def cells(row: dict[str, Any]) -> tuple[str, str, str, str]:
         str(row.get("attempts", row.get("evaluated_cases", ""))),
         str(row.get("scope", "bounded original reducer")),
     )
+
+
+def outcome_label(outcome: dict[str, Any]) -> str:
+    """Keep record/byte counts or the actual parser-error code visible without serializing a dictionary into a cell."""
+    if outcome["status"] == "ok":
+        return f"OK {outcome['count']}r/{outcome['bytes']}B"
+    return "ERR " + str(outcome["code"])

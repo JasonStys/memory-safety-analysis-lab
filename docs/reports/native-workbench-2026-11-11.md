@@ -9,7 +9,7 @@ The new Tk view composes the existing project engine with bounded descriptor-bas
 ## Actual local observations
 
 - Patched isolated CPython 3.14.10; actual frozen Python DLL is hash-bound. Tcl/Tk 9.0.4 notices were read from the running distribution rather than guessed from a different runtime family. PyInstaller 6.22.3 and hooks 2026.9 are separately hash-locked.
-- Source suite: **150 passed; 3 explicit Windows/platform skips; 96.09% combined branch/statement runtime coverage**, retaining the original **95%** floor. Skips explicitly identify unavailable POSIX FIFO or Windows link capability; they are not silent passes.
+- Source suite: **152 passed; 3 explicit Windows/platform skips; 96.11% combined branch/statement runtime coverage**, retaining the original **95%** floor. Skips explicitly identify unavailable POSIX FIFO or Windows link capability; they are not silent passes.
 - A complete dirty-source candidate was built and used through **9 real workflows**, **9 saved evidence bundles**, error preservation, exact no-overwrite exports and **two normal process launches** with byte-identical history. This candidate proof is not an immutable release or public installation claim. Final clean-source and hosted observations are recorded separately by their exact commit.
 - Real file selection, custom controls, invalid input, confirmation cancellation, saved detail/search, visible minimum-size layout and normal shutdown were exercised in the actual executable. The synthetic profile was fresh and removed only after owned processes exited. Normal user data, desktop shortcuts and Docker were unchanged.
 
@@ -20,3 +20,5 @@ The Windows CI lane builds the complete one-file program and repeats the actual 
 The GUI does not accept source code, executable/compiler paths, plugins, unsafe specimens or network targets. It never claims that agreement proves universal memory safety. Sanitizers, compile-rejection controls, C++ coverage, libFuzzer and Rust mutation tests remain separate original CI gates. The shipped two fixed safe workers are the actual compiled engines; no Python replacement is used in frozen review.
 
 The profile guards prevent accidental linked-file writes to fixed mutable state before initialization. They do not turn a local single-OS-owner application into a hostile-administrator sandbox. Reports and aliases are not authenticated independent attestations. The portable executable is unsigned; no cross-platform native distribution, NSIS installation, universal safety or certification is asserted.
+
+Visual review also corrected the case grid to show compact real parser status, record/byte counts and visibly shortened hash labels, while complete hashes/fingerprints remain in the unchanged selected JSON detail. Independent positive/disagreement display oracles cover this presentation boundary.

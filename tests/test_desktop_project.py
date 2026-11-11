@@ -1,51 +1,56 @@
 """Real safe-worker data oracles, bounded private-corpus controls and payload-free evidence. Jason Stys."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: execute — line 57
-# parameter: parameters — line 57
-# parameter: tmp_path — line 57
-# variable: stage — line 59
-# definition: test_original_243_cases_use_both_actual_workers_and_reference — line 64
-# parameter: tmp_path — line 64
-# variable: files — line 66
-# variable: value — line 67
-# variable: row — line 70
-# variable: views — line 72
-# variable: rows — line 75
-# variable: row — line 76
-# definition: test_prepared_binary_errors_and_boundaries_have_independent_oracles — line 92
-# parameter: code — line 93
-# parameter: count — line 93
-# parameter: index — line 93
-# parameter: size — line 93
-# parameter: status — line 93
-# parameter: tmp_path — line 93
-# variable: files — line 96
-# variable: value — line 97
-# variable: row — line 100
-# variable: language — line 101
-# variable: outcome — line 102
-# definition: test_selected_private_files_deduplicate_without_exporting_paths_or_payload — line 111
-# parameter: tmp_path — line 112
-# variable: one — line 115
-# variable: bad — line 117
-# variable: parameters — line 119
-# variable: files — line 121
-# variable: value — line 122
-# variable: scope — line 129
-# variable: raw — line 132
-# definition: test_bad_parameters_refuse_without_payload_execution — line 152
-# parameter: field — line 152
-# parameter: tmp_path — line 152
-# parameter: value — line 152
-# variable: parameters — line 154
-# definition: test_explicit_file_count_before_any_read — line 161
-# parameter: paths — line 161
-# parameter: tmp_path — line 161
-# variable: parameters — line 163
-# definition: test_input_and_aggregate_limits_preserve_original_sources — line 169
-# parameter: tmp_path — line 169
-# variable: large — line 171
-# variable: parameters — line 173
+# definition: execute — line 62
+# parameter: parameters — line 62
+# parameter: tmp_path — line 62
+# variable: stage — line 64
+# definition: test_original_243_cases_use_both_actual_workers_and_reference — line 69
+# parameter: tmp_path — line 69
+# variable: files — line 71
+# variable: value — line 72
+# variable: row — line 75
+# variable: views — line 77
+# variable: rows — line 80
+# variable: row — line 81
+# definition: test_prepared_binary_errors_and_boundaries_have_independent_oracles — line 97
+# parameter: code — line 98
+# parameter: count — line 98
+# parameter: index — line 98
+# parameter: size — line 98
+# parameter: status — line 98
+# parameter: tmp_path — line 98
+# variable: files — line 101
+# variable: value — line 102
+# variable: row — line 105
+# variable: language — line 106
+# variable: outcome — line 107
+# definition: test_selected_private_files_deduplicate_without_exporting_paths_or_payload — line 116
+# parameter: tmp_path — line 117
+# variable: one — line 120
+# variable: bad — line 122
+# variable: parameters — line 124
+# variable: files — line 126
+# variable: value — line 127
+# variable: scope — line 134
+# variable: raw — line 137
+# definition: test_bad_parameters_refuse_without_payload_execution — line 157
+# parameter: field — line 157
+# parameter: tmp_path — line 157
+# parameter: value — line 157
+# variable: parameters — line 159
+# definition: test_explicit_file_count_before_any_read — line 166
+# parameter: paths — line 166
+# parameter: tmp_path — line 166
+# variable: parameters — line 168
+# definition: test_input_and_aggregate_limits_preserve_original_sources — line 174
+# parameter: tmp_path — line 174
+# variable: large — line 176
+# variable: parameters — line 178
+# definition: test_legible_outcome_cells_preserve_complete_selected_evidence — line 188
+# parameter: matches — line 188
+# variable: expected — line 190
+# variable: bad — line 191
+# variable: row — line 192
 # END CODE MAP
 
 import pytest
@@ -177,3 +182,25 @@ def test_input_and_aggregate_limits_preserve_original_sources(tmp_path):
     assert large.stat().st_size == 1024 * 1024
     with pytest.raises(Rejected):
         project.scenario("unknown")
+
+
+@pytest.mark.parametrize("matches", [True, False])
+def test_legible_outcome_cells_preserve_complete_selected_evidence(matches):
+    """The grid exposes true counts/error differences while the unchanged selected row retains its complete identity."""
+    expected = {"status": "ok", "count": 3, "bytes": 23, "fingerprint": 123, "code": ""}
+    bad = {"status": "error", "count": 0, "bytes": 0, "fingerprint": 0, "code": "tag"}
+    row = {
+        "kind": "case",
+        "case": "f" * 64,
+        "expected": expected,
+        "cpp": expected if matches else bad,
+        "rust": expected,
+        "matches": matches,
+    }
+    assert project.cells(row) == (
+        "f" * 16 + "…",
+        "OK 3r/23B",
+        ("OK 3r/23B" if matches else "ERR tag") + " | OK 3r/23B",
+        "AGREEMENT" if matches else "DISAGREEMENT",
+    )
+    assert row["case"] == "f" * 64 and row["expected"]["fingerprint"] == 123

@@ -349,7 +349,7 @@ class Workbench:
         filters.pack(fill="x", pady=(0, 8))
         ttk.Label(filters, text="Evidence view").pack(side="left")
         self.view_box = ttk.Combobox(
-            filters, textvariable=self.view, state="readonly", width=32
+            filters, textvariable=self.view, state="readonly", width=40
         )
         self.view_box.pack(side="left", padx=8)
         self.view_box.bind("<<ComboboxSelected>>", lambda _event: self.render())
