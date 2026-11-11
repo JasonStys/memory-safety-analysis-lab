@@ -165,6 +165,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [scripts/benchmark.py](scripts/benchmark.py) | Jason Stys: repeated release C++/Rust process-inclusive performance comparisons on identical data. |
 | [scripts/build.py](scripts/build.py) | Jason Stys: explicit default-safe CMake and Rust release builds; no specimen targets or global installs. |
 | [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
+| [scripts/check\_tk\_runtime.py](scripts/check_tk_runtime.py) | Require the selected interpreter's actual native Tk imports and loaded Tcl, without a display. Jason Stys. |
 | [scripts/code\_map.py](scripts/code_map.py) | Jason Stys: generate exact definition/variable line maps and verify Python function/class contracts. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Jason Stys: exact tracked-file README purpose inventory, unknown files fail rather than receive guesses. |
 | [scripts/fuzz.py](scripts/fuzz.py) | Jason Stys: actual coverage-guided libFuzzer campaign on safe C++ parser, never faulty specimens. |
@@ -189,6 +190,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tests/test\_runner\_network\_policy.py](tests/test_runner_network_policy.py) | Actual workflow policy mutants for signed disposable-runner APT acquisition. Jason Stys. |
+| [tests/test\_tk\_runtime.py](tests/test_tk_runtime.py) | Actual isolated native Tcl positive plus fail-closed loader/interpreter/version controls. Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 
 <!-- END FILE GUIDE -->
