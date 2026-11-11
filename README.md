@@ -127,6 +127,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
+| [docs/reports/runner-network-2026-11-11.md](docs/reports/runner-network-2026-11-11.md) | Disposable-runner package acquisition — 2026-11-11. |
 | [docs/reports/sanitizers.json](docs/reports/sanitizers.json) | Actual normalized hosted sanitizer and Rust compile-rejection evidence. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation and accepted-source evidence. |
 | [docs/research.md](docs/research.md) | Primary research and implementation choices. |
@@ -187,6 +188,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [tests/test\_native\_worker.py](tests/test_native_worker.py) | Frozen fixed-worker authority, exact transport, timeout ownership and source dispatch controls. Jason Stys. |
 | [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
+| [tests/test\_runner\_network\_policy.py](tests/test_runner_network_policy.py) | Actual workflow policy mutants for signed disposable-runner APT acquisition. Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 
 <!-- END FILE GUIDE -->
