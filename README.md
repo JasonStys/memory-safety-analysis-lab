@@ -123,7 +123,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/reports/ci.json](docs/reports/ci.json) | Immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/corpus-2026-11-09.md](docs/reports/corpus-2026-11-09.md) | Data corpus and disagreement reduction validation — November 9, 2026. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
-| [docs/reports/native-workbench-2026-11-11.md](docs/reports/native-workbench-2026-11-11.md) | Native workbench validation — November 11, 2026. |
+| [docs/reports/native-workbench-2026-11-11.md](docs/reports/native-workbench-2026-11-11.md) | Native workbench validation â€” November 11, 2026. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
@@ -134,6 +134,8 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/testing.md](docs/testing.md) | Testing strategy and acceptance gates. |
 | [docs/usage.md](docs/usage.md) | Setup, demos and troubleshooting. |
 | [docs/windows-app.md](docs/windows-app.md) | Windows application: memory-safety-analysis-lab. |
+| [licenses/MSVC-STL-LICENSE.txt](licenses/MSVC-STL-LICENSE.txt) | Unmodified official Microsoft STL Apache-2.0 WITH LLVM-exception terms, matching installed header declarations. |
+| [licenses/README.md](licenses/README.md) | Native library notices. |
 | [licenses/RUST-COPYRIGHT-library.html](licenses/RUST-COPYRIGHT-library.html) | Unmodified Rust standard-library copyright and dependency notices retained for the actual native worker. |
 | [msal/\_\_init\_\_.py](msal/__init__.py) | Jason Stys: safe C++/Rust differential analysis and synthetic regression evidence. |
 | [msal/cli.py](msal/cli.py) | Jason Stys: synthetic differential demo or bounded local-data review with inert no-overwrite reports. |

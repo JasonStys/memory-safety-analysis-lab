@@ -3,27 +3,30 @@
 No publication, installation, shortcut change, host collection or Docker action.
 """
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 39
-# definition: main — line 43
-# variable: version — line 52
-# variable: source — line 55
-# variable: dirty — line 58
-# variable: output — line 63
-# variable: release — line 63
-# variable: vendor — line 101
-# variable: resource_paths — line 110
-# variable: name — line 124
-# variable: metadata — line 126
-# variable: name — line 134
-# variable: path — line 134
-# variable: command — line 140
-# variable: name — line 161
-# variable: path — line 161
-# variable: command — line 164
-# variable: command — line 165
-# variable: executable — line 179
-# variable: stream — line 180
-# variable: digest — line 181
+# variable: ROOT — line 42
+# definition: main — line 46
+# variable: version — line 55
+# variable: source — line 58
+# variable: dirty — line 61
+# variable: output — line 66
+# variable: release — line 66
+# variable: expected — line 104
+# variable: label — line 104
+# variable: name — line 104
+# variable: vendor — line 116
+# variable: resource_paths — line 131
+# variable: name — line 145
+# variable: metadata — line 147
+# variable: name — line 155
+# variable: path — line 155
+# variable: command — line 161
+# variable: name — line 182
+# variable: path — line 182
+# variable: command — line 185
+# variable: command — line 186
+# variable: executable — line 200
+# variable: stream — line 201
+# variable: digest — line 202
 # END CODE MAP
 
 import hashlib
@@ -98,14 +101,32 @@ def main() -> None:
         timeout=30,
     )
     notices(release / "notices.txt")
-    vendor = (ROOT / "licenses/RUST-COPYRIGHT-library.html").read_bytes()
-    if len(vendor) > 4 * 1024 * 1024:
-        raise ValueError("Actual Rust library notice exceeds its reviewed bound")
-    (release / "notices.txt").write_bytes(
-        (release / "notices.txt").read_bytes()
-        + b"\n\nRust1.98.1 library inventory\n"
-        + vendor
-    )
+    for label, name, expected in (
+        (
+            "Rust1.98.1 library inventory",
+            "RUST-COPYRIGHT-library.html",
+            "68129500b616d5838629e68f55ff3aed5e096dacf60ce9eb41bbe599a563afa6",
+        ),
+        (
+            "Microsoft C++ Standard Library / Apache2.0 WITH LLVM-exception",
+            "MSVC-STL-LICENSE.txt",
+            "1fc6b6db121d4555d8f661937d7f6013693cd8fd67495d5e5d98c1d18fb83eda",
+        ),
+    ):
+        vendor = (ROOT / "licenses" / name).read_bytes()
+        if (
+            len(vendor) > 4 * 1024 * 1024
+            or hashlib.sha256(vendor).hexdigest() != expected
+        ):
+            raise ValueError("Actual native library notice identity changed")
+        (release / "notices.txt").write_bytes(
+            (release / "notices.txt").read_bytes()
+            + b"\n\n"
+            + label.encode()
+            + b"\n"
+            + vendor
+        )
+
     icon(output / "app.ico")
     resource_paths = {
         name: (

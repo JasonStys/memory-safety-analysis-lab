@@ -1,4 +1,4 @@
-# Native workbench validation — November 11, 2026
+# Native workbench validation â€” November 11, 2026
 
 ## Implemented behavior
 
@@ -22,3 +22,15 @@ The GUI does not accept source code, executable/compiler paths, plugins, unsafe 
 The profile guards prevent accidental linked-file writes to fixed mutable state before initialization. They do not turn a local single-OS-owner application into a hostile-administrator sandbox. Reports and aliases are not authenticated independent attestations. The portable executable is unsigned; no cross-platform native distribution, NSIS installation, universal safety or certification is asserted.
 
 Visual review also corrected the case grid to show compact real parser status, record/byte counts and visibly shortened hash labels, while complete hashes/fingerprints remain in the unchanged selected JSON detail. Independent positive/disagreement display oracles cover this presentation boundary.
+
+
+## C++ and Rust terms follow-up
+
+The final native notices retain the complete Rust1.98.1 library copyright inventory and the unmodified [Microsoft STL license](../../licenses/MSVC-STL-LICENSE.txt). Actual local MSVC145 headers declare Apache-2.0 WITH LLVM-exception. The license text is bound to official microsoft/STL commit219514876ea86491de191ceaa88632616bbc0f19 and SHA1fc6b6db121d4555d8f661937d7f6013693cd8fd67495d5e5d98c1d18fb83eda. This identifies the terms, not an entire compiler-source match. The fixed C++ kernel statically links its runtime; source/native gates and inputs are unchanged. Microsoft toolchain redistribution remains subject to the licensed build tools' terms; no legal certification or blanket completeness claim is made.
+
+
+## Exact native-worker completion follow-up
+
+Review found that a failed final drain could release a GUI worker without proving child exit. The original15-second analysis deadline and bounded kill/drain attempts remain unchanged. If completion stays unproven, the same worker/profile remains pending until its exact child is reaped; only then does the original analysis failure propagate. Inert gated double-timeout/signal-error regressions confirm no premature completion. This is a robustness fix, not a claim of an observed PC orphan or a shorter stop guarantee.
+
+The complete follow-up local source suite passed: **154 passed / 3 explicit Windows-platform skips / 96.16% combined runtime coverage**, retaining the original95% floor. Initial candidate measurements above remain historical; final updated clean-package/native and hosted proofs are separate exact-source receipts.

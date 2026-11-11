@@ -81,20 +81,20 @@
 # variable: widget — line 404
 # variable: text — line 410
 # variable: value — line 411
-# definition: completed — line 415
-# parameter: index — line 415
-# variable: files — line 421
-# variable: parent — line 444
-# variable: target — line 450
-# variable: path — line 451
-# variable: selected — line 454
-# definition: start — line 466
-# parameter: index — line 466
-# variable: valid — line 473
-# variable: invalid — line 474
-# definition: begin — line 488
-# variable: identity — line 492
-# attribute: report_callback_exception — line 508
+# definition: completed — line 416
+# parameter: index — line 416
+# variable: files — line 422
+# variable: parent — line 445
+# variable: target — line 451
+# variable: path — line 452
+# variable: selected — line 455
+# definition: start — line 467
+# parameter: index — line 467
+# variable: valid — line 474
+# variable: invalid — line 475
+# definition: begin — line 489
+# variable: identity — line 493
+# attribute: report_callback_exception — line 509
 # END CODE MAP
 
 from __future__ import annotations
@@ -409,6 +409,7 @@ def exercise(window: Workbench, output: Path, reopen: bool) -> None:
         assert len(texts) == 1
         text = texts[0].get("1.0", "end")
         assert all(value in text for value in ("Python", "Tcl", "Tk"))
+        assert "Microsoft C++ Standard Library" in text and "LLVM Exception" in text
         dialog.destroy()
         receipt["steps"].append("actual-bundled-runtime-license-window")
 
