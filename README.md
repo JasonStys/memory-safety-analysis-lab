@@ -123,6 +123,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/reports/ci.json](docs/reports/ci.json) | Immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/corpus-2026-11-09.md](docs/reports/corpus-2026-11-09.md) | Data corpus and disagreement reduction validation — November 9, 2026. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/installed-windows-1.1.0-2026-11-11.md](docs/reports/installed-windows-1.1.0-2026-11-11.md) | Observed installed workflows, delivery evidence, data preservation and practical limits. |
 | [docs/reports/native-workbench-2026-11-11.md](docs/reports/native-workbench-2026-11-11.md) | Native workbench validation â€” November 11, 2026. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
@@ -130,6 +131,8 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [docs/reports/runner-network-2026-11-11.md](docs/reports/runner-network-2026-11-11.md) | Disposable-runner package acquisition — 2026-11-11. |
 | [docs/reports/sanitizers.json](docs/reports/sanitizers.json) | Actual normalized hosted sanitizer and Rust compile-rejection evidence. |
 | [docs/reports/validation.md](docs/reports/validation.md) | Validation and accepted-source evidence. |
+| [docs/reports/windows-application-guide-1.1.0.docx](docs/reports/windows-application-guide-1.1.0.docx) | Current peer-reviewed installed app guide with actual screenshots and immutable code. |
+| [docs/reports/windows-application-guide-1.1.0.json](docs/reports/windows-application-guide-1.1.0.json) | Exact guide, source, image and individually reviewed page identities. |
 | [docs/research.md](docs/research.md) | Primary research and implementation choices. |
 | [docs/security.md](docs/security.md) | Security model and reporting policy. |
 | [docs/testing.md](docs/testing.md) | Testing strategy and acceptance gates. |
@@ -181,6 +184,7 @@ Generated from every tracked file; stale summaries or unknown purposes fail vali
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: actual worker/CLI privacy, no-overwrite output and process/batch failure regressions. |
 | [tests/test\_core.py](tests/test_core.py) | Jason Stys: reference/native protocol bounds, deterministic corpus and malformed-data properties. |
 | [tests/test\_corpus.py](tests/test_corpus.py) | Jason Stys: bounded data corpus and independently controlled disagreement-oracle regressions. |
+| [tests/test\_current\_installed\_guide.py](tests/test_current_installed_guide.py) | Jason Stys: current named Word XML visibility and unknown binary refusal; navigation in docs/CODE_INDEX.md. |
 | [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
 | [tests/test\_desktop\_io.py](tests/test_desktop_io.py) | Private state JSON and bounded descriptor-read boundary cases with actual file bytes. Jason Stys. |
 | [tests/test\_desktop\_project.py](tests/test_desktop_project.py) | Real safe-worker data oracles, bounded private-corpus controls and payload-free evidence. Jason Stys. |
@@ -202,3 +206,8 @@ MIT licensed. Passing bounded examples and campaigns are evidence for these inpu
 Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
 
 [Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
+
+
+## Current installed application guide
+
+The published **1.1.0** application has a [four-page guide](docs/reports/windows-application-guide-1.1.0.docx) with actual installed screenshots, a practical journey, immutable source excerpts and operating limits. The [installed validation report](docs/reports/installed-windows-1.1.0-2026-11-11.md) explains the results and [review manifest](docs/reports/windows-application-guide-1.1.0.json) records exact source, image and page identities. Historical documentation remains available.
