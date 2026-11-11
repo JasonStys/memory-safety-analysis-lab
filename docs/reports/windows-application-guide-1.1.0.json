@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "repository": "memory-safety-analysis-lab",
+  "runtimeVersion": "1.1.0",
+  "runtimeSource": "2526a32020cc7628e36e8931ef3be65eee2a0d5c",
+  "createdAt": "2026-11-11T16:19:36.804Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.0.docx",
+  "sha256": "881661839b25fe9d4617d122e517c204a012a59f8bfc9727dd8c555e595a9137",
+  "screenshots": [
+    {
+      "file": "selected-evidence.png",
+      "sha256": "d086cc32096d45f41e21a5384bbebbdb996036dbf51af9d983edf343698353ff",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed app shows the actual 243-case three-language comparison with zero disagreements for this supplied corpus."
+    },
+    {
+      "file": "owner-unknown-review.png",
+      "sha256": "dd355ed10f560f7c5ddd76124ec93c97c3b0023293c57fdab7f52dbccd19d8d0",
+      "width": 1276,
+      "height": 899,
+      "caption": "The second installed view keeps selected review evidence and scope visible; full result JSON is available in the exported bundle."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "msal/desktop_project.py",
+      "first": 191,
+      "last": 207,
+      "sha256": "81d345e3099c3804ada8f69068734f081ed990fd3cc615d9365165374d2c520d",
+      "url": "https://github.com/JasonStys/memory-safety-analysis-lab/blob/2526a32020cc7628e36e8931ef3be65eee2a0d5c/msal/desktop_project.py#L191"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Independent distribution",
+      "observed": "Downloaded provider assets, sidecar and installed file identities matched. The complete installed app was used; installation resources remained byte-identical.",
+      "result": "Passed"
+    },
+    {
+      "name": "Actual app use and restart",
+      "observed": "Nine actual workflows and nine retained bundles passed the complete original installed consumer; two launches exited normally and the exact history/export bytes reopened.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and security",
+      "observed": "All current main workflows passed before publication. All configured exact-source processed CodeQL categories had zero raw findings and zero open alerts.",
+      "result": "Passed"
+    },
+    {
+      "name": "Individual shortcut",
+      "observed": "Desktop and Start-menu targets were read back against the installed version. Normal default-profile shortcut activation is separate from full installed executable acceptance.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": "all four pages individually approved",
+  "reviewer": "audit_space_drone",
+  "reviewedPageHashes": {
+    "page-1.png": "8d50b818c45cfe687222c107aedc361efdc27f35d33b839267593a22ef766915",
+    "page-2.png": "dcaeede4b67ec28fe73f2557157badc76942180a123e1fecc37bcebbb491894e",
+    "page-3.png": "ab8004ca3e8c9dd97cc556033ee696b0d91700fa9239c436ae86c9460bbcc304",
+    "page-4.png": "4827ff4436fc8993582e5c2fdc99dacabece91c9bc0f3c11345b9a5b8b499905"
+  },
+  "privateTestInputsOnly": true
+}

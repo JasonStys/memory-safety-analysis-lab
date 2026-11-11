@@ -4,27 +4,27 @@
 # variable: BEGIN — line 36
 # variable: END — line 36
 # variable: SPECIAL — line 37
-# definition: purpose — line 55
-# parameter: name — line 55
-# variable: text — line 59
-# variable: lines — line 64
-# variable: index — line 65
-# variable: line — line 65
-# variable: description — line 67
-# variable: continuation — line 69
-# variable: description — line 75
-# definition: main — line 80
-# variable: parser — line 82
-# variable: args — line 84
-# variable: names — line 85
-# variable: rows — line 93
-# variable: name — line 94
-# variable: label — line 95
-# variable: path — line 97
-# variable: original — line 98
-# variable: end — line 99
-# variable: start — line 99
-# variable: expected — line 100
+# definition: purpose — line 58
+# parameter: name — line 58
+# variable: text — line 62
+# variable: lines — line 67
+# variable: index — line 68
+# variable: line — line 68
+# variable: description — line 70
+# variable: continuation — line 72
+# variable: description — line 78
+# definition: main — line 83
+# variable: parser — line 85
+# variable: args — line 87
+# variable: names — line 88
+# variable: rows — line 96
+# variable: name — line 97
+# variable: label — line 98
+# variable: path — line 100
+# variable: original — line 101
+# variable: end — line 102
+# variable: start — line 102
+# variable: expected — line 103
 # END CODE MAP
 
 import argparse
@@ -35,6 +35,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/windows-application-guide-1.1.0.docx": "Current peer-reviewed installed app guide with actual screenshots and immutable code.",
+    "docs/reports/windows-application-guide-1.1.0.json": "Exact guide, source, image and individually reviewed page identities.",
+    "docs/reports/installed-windows-1.1.0-2026-11-11.md": "Observed installed workflows, delivery evidence, data preservation and practical limits.",
     "licenses/MSVC-STL-LICENSE.txt": "Unmodified official Microsoft STL Apache-2.0 WITH LLVM-exception terms, matching installed header declarations.",
     "requirements-native.lock": "Exact hash-locked portable freezer graph, separate from the project runtime.",
     "licenses/RUST-COPYRIGHT-library.html": "Unmodified Rust standard-library copyright and dependency notices retained for the actual native worker.",
